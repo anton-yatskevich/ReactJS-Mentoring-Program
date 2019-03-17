@@ -1,10 +1,10 @@
-import React, { PureComponent } from 'react';
+import { PureComponent } from 'react';
 
 class Header extends PureComponent {
-	render() {
+    render() {
         const { title } = this.props;
-		return <header><h1>{title}</h1></header>
-	}
-};
+        return <header><h1>{title}</h1></header>;
+    }
+}
 
 export default Header;

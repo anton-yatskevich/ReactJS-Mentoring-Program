@@ -7,9 +7,9 @@ const router = express.Router();
 app.use(express.static(path.join(__dirname, '../public')));
 
 router.get('/', (req, res) => {
-	res.render('index.html');
+    res.render('index.html');
 });
 
 app.listen(3000, () => {
-	console.log('App listening on port 3000...');
+    console.log('App listening on port 3000...');
 });
