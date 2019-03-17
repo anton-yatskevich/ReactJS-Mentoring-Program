@@ -3,7 +3,8 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
-module.exports = (env, argv) => ({
+module.exports = {
+    mode: process.env.NODE_ENV,
     entry: './client/index.js',
     output: {
         filename: 'bundle.js',
@@ -44,5 +45,5 @@ module.exports = (env, argv) => ({
         contentBase: './public',
         stats: 'errors-only'
     },
-    devtool: argv.mode === 'development' ? 'source-map' : 'none'
-});
+    devtool: process.env.NODE_ENV === 'development' ? 'source-map' : 'none'
+};

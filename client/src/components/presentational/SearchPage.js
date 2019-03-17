@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import Foooter from './Footer';
 import Header from './Header';
 import ResultsList from './Results';
@@ -19,7 +19,7 @@ class SearchPage extends Component {
     render() {
         return (
             <>
-                <Header title='netflixroulette' />
+                <Header title="netflixroulette" />
                 <ResultsList {...this.state} />
                 <Foooter />
             </>

@@ -5,7 +5,7 @@
         "es6": true,
         "node": true
     },
-    "extends": ["airbnb-base"],
+    "extends": "airbnb",
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
@@ -16,8 +16,9 @@
         },
         "ecmaVersion": 2018
     },
-    "plugins": [
-        "react"
+    "plugins": [ 
+        "react",
+        "import"
     ],
     "rules": {
         "indent": ["error", 4],
@@ -27,6 +28,8 @@
             "single"
         ],
         "react/jsx-uses-react": "error",
-        "react/jsx-uses-vars": "error"
+        "react/jsx-uses-vars": "error",
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "react/jsx-indent": ["error", 4]
     }
 }

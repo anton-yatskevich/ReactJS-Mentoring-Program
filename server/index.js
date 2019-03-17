@@ -6,7 +6,7 @@ const router = express.Router();
 
 app.use(express.static(path.join(__dirname, '../public')));
 
-router.get('/', (req, res) => {
+router.get('*', (req, res) => {
     res.render('index.html');
 });
 

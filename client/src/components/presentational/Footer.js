@@ -1,6 +1,6 @@
-import { createElement } from 'react';
+import React from 'react';
 
-const Footer = () => createElement(
+const Footer = () => React.createElement(
     'footer',
     null,
     'Copyright © 2019'
