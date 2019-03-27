@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import SearchPage from './src/components/presentational/SearchPage';
+import AppContainer from './src/containers/AppContainer';
 import './src/styles/index.scss';
 
 const container = document.getElementById('react-app');
-if (container) ReactDOM.render(<SearchPage />, container);
+if (container) ReactDOM.render(<AppContainer />, container);

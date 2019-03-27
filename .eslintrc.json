@@ -30,6 +30,8 @@
         "react/jsx-uses-react": "error",
         "react/jsx-uses-vars": "error",
         "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-        "react/jsx-indent": ["error", 4]
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props": ["error", 4],
+        "camelcase": ["error", {"properties": "never"}]
     }
 }
