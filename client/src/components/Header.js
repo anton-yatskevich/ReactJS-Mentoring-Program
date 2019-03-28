@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 
 const Header = ({ isSearchPage, goToSearchHandler }) => (
     <header>
-        <h1>netflixroulette</h1>
-        {!isSearchPage && <button type="button" onClick={goToSearchHandler}>SEARCH</button>}
+        <div className="header__wrapper">
+            <h1>netflixroulette</h1>
+            {!isSearchPage && <button type="button" onClick={goToSearchHandler}>SEARCH</button>}
+        </div>
     </header>
 );
 
@@ -14,7 +16,7 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-    isSearchPage: null,
+    isSearchPage: false,
     goToSearchHandler: null
 };
 

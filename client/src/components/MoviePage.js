@@ -12,7 +12,9 @@ const MoviePage = ({ movies, selectedMovie, onSelectMovie }) => {
     return (
         <>
             <Movie {...selectedMovie} />
-            <p className="movie-page__results-description">{`Films by ${currentGenre} genre`}</p>
+            <div className="search-description__wrapper">
+                <p className="movie-page__results-description">{`Films by ${currentGenre} genre`}</p>
+            </div>
             <ResultsList movies={fiteredResults} onSelectMovieHandler={onSelectMovie} />
         </>
     );
@@ -33,8 +35,8 @@ MoviePage.propTypes = {
 };
 
 MoviePage.defaultProps = {
-    movies: null,
-    selectedMovie: null,
+    movies: [],
+    selectedMovie: {},
     onSelectMovie: null
 };
 
