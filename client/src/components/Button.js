@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Button = ({ onClickHandler, textValue, searchField }) => (
+const Button = ({
+    onClickHandler, textValue, value, searchField
+}) => (
     <button
         type="button"
-        onClick={() => onClickHandler(textValue)}
-        className={searchField === textValue ? 'button--active' : ''}
+        onClick={() => onClickHandler(value)}
+        className={searchField === value ? 'button--active' : ''}
     >
         {textValue}
     </button>
@@ -14,12 +16,14 @@ const Button = ({ onClickHandler, textValue, searchField }) => (
 Button.propTypes = {
     onClickHandler: PropTypes.func,
     textValue: PropTypes.string,
+    value: PropTypes.string,
     searchField: PropTypes.string
 };
 
 Button.defaultProps = {
     onClickHandler: null,
     textValue: null,
+    value: null,
     searchField: null
 };
 

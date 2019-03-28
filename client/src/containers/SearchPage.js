@@ -5,6 +5,8 @@ import ResultsList from '../components/ResultsList';
 import SearchPanel from './SearchPanel';
 import SearchDescription from '../components/SearchDescription';
 
+import { sortMoviesComporator, filterMoviesComporator } from '../utils';
+
 class SearchPage extends Component {
     constructor(props) {
         super(props);
@@ -20,10 +22,12 @@ class SearchPage extends Component {
     }
 
     onSearchFormSubmit(value) {
+        const { searchField, sortField } = this.state;
+
         this.setState({
             results: this.movies
-                .filter(movie => this.filterCallback(movie, value))
-                .sort((a, b) => this.sortCallback(a, b))
+                .filter(movie => filterMoviesComporator(movie, value, searchField))
+                .sort((a, b) => sortMoviesComporator(a, b, sortField))
         });
     }
 
@@ -33,33 +37,14 @@ class SearchPage extends Component {
         });
     }
 
-    onChangeSort(value) {
+    onChangeSort(sortField) {
+        const { results } = this.state;
+
         this.setState({
-            sortField: value
+            sortField,
+            results: results
+                .sort((a, b) => sortMoviesComporator(a, b, sortField))
         });
-    }
-
-    filterCallback(movie, searchValue) {
-        const { searchField } = this.state;
-        const field = movie[searchField];
-
-        if (Array.isArray(field)) {
-            return field.some(item => item.toLowerCase().indexOf(searchValue) !== -1);
-        }
-        return field.toLowerCase().indexOf(searchValue) !== -1;
-    }
-
-    sortCallback(a, b) {
-        const { sortField } = this.state;
-
-        switch (sortField) {
-        case 'rating':
-            return b.vote_average - a.vote_average;
-        case 'release date':
-            return Number(b.release_date.slice(0, 4)) - Number(a.release_date.slice(0, 4));
-        default:
-            return 0;
-        }
     }
 
     render() {
