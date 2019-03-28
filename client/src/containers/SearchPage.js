@@ -81,7 +81,7 @@ SearchPage.propTypes = {
 };
 
 SearchPage.defaultProps = {
-    movies: null,
+    movies: [],
     onSelectMovie: null
 };
 

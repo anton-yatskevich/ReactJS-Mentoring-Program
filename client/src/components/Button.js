@@ -22,9 +22,9 @@ Button.propTypes = {
 
 Button.defaultProps = {
     onClickHandler: null,
-    textValue: null,
-    value: null,
-    searchField: null
+    textValue: '',
+    value: '',
+    searchField: ''
 };
 
 export default Button;

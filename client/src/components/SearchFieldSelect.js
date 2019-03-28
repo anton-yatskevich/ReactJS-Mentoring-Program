@@ -18,7 +18,7 @@ SearchFieldSelect.propTypes = {
 
 SearchFieldSelect.defaultProps = {
     onChangeSearchField: null,
-    searchField: null
+    searchField: ''
 };
 
 export default SearchFieldSelect;

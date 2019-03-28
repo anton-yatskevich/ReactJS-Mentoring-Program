@@ -37,8 +37,8 @@ SearchDescription.propTypes = {
 };
 
 SearchDescription.defaultProps = {
-    numberOfResults: null,
-    sortField: null,
+    numberOfResults: 0,
+    sortField: '',
     onChangeSort: null
 };
 

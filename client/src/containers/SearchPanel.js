@@ -51,7 +51,7 @@ SearchPanel.propTypes = {
 };
 
 SearchPanel.defaultProps = {
-    searchField: null,
+    searchField: '',
     onSubmit: null,
     onChangeSearchField: null
 };

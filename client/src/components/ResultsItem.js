@@ -24,11 +24,11 @@ ResultsItem.propTypes = {
 };
 
 ResultsItem.defaultProps = {
-    poster_path: null,
-    title: null,
-    genres: null,
-    id: null,
-    release_date: null,
+    poster_path: '',
+    title: '',
+    genres: [],
+    id: 0,
+    release_date: '',
     onSelectHandler: null
 };
 

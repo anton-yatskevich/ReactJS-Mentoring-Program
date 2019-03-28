@@ -23,7 +23,7 @@ ResultsList.propTypes = {
 };
 
 ResultsList.defaultProps = {
-    movies: null,
+    movies: [],
     onSelectMovieHandler: null
 };
 
