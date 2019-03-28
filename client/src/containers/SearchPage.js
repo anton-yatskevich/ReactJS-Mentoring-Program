@@ -20,10 +20,10 @@ class SearchPage extends Component {
     }
 
     onSearchFormSubmit(value) {
-        const { searchField } = this.state;
         this.setState({
             results: this.movies
-                .filter(movie => movie[searchField].toLowerCase().indexOf(value) !== -1)
+                .filter(movie => this.filterCallback(movie, value))
+                .sort((a, b) => this.sortCallback(a, b))
         });
     }
 
@@ -39,6 +39,29 @@ class SearchPage extends Component {
         });
     }
 
+    filterCallback(movie, searchValue) {
+        const { searchField } = this.state;
+        const field = movie[searchField];
+
+        if (Array.isArray(field)) {
+            return field.some(item => item.toLowerCase().indexOf(searchValue) !== -1);
+        }
+        return field.toLowerCase().indexOf(searchValue) !== -1;
+    }
+
+    sortCallback(a, b) {
+        const { sortField } = this.state;
+
+        switch (sortField) {
+        case 'rating':
+            return b.vote_average - a.vote_average;
+        case 'release date':
+            return Number(b.release_date.slice(0, 4)) - Number(a.release_date.slice(0, 4));
+        default:
+            return 0;
+        }
+    }
+
     render() {
         const { searchField, sortField, results } = this.state;
         const { onSelectMovie } = this.props;
@@ -47,10 +70,8 @@ class SearchPage extends Component {
             <>
                 <SearchPanel
                     searchField={searchField}
-                    sortField={sortField}
                     onSubmit={this.onSearchFormSubmit}
                     onChangeSearchField={this.onChangeSearchField}
-                    onChangeSort={this.onChangeSort}
                 />
                 <SearchDescription
                     numberOfResults={results.length}
