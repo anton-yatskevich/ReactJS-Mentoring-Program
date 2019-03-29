@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import noop from 'lodash.noop';
+import './styles.scss';
 
 const ResultsItem = ({
     poster_path: path, title, genres, id, release_date: date, onSelectHandler
@@ -29,7 +31,7 @@ ResultsItem.defaultProps = {
     genres: [],
     id: 0,
     release_date: '',
-    onSelectHandler: null
+    onSelectHandler: noop
 };
 
 export default ResultsItem;

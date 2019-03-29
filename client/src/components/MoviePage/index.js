@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import noop from 'lodash.noop';
 
-import Movie from './Movie';
-import ResultsList from './ResultsList';
+import Movie from '../Movie';
+import ResultsList from '../ResultsList';
+import './styles.scss';
 
 const MoviePage = ({ movies, selectedMovie, onSelectMovie }) => {
     const currentGenre = selectedMovie.genres[0];
@@ -37,7 +39,7 @@ MoviePage.propTypes = {
 MoviePage.defaultProps = {
     movies: [],
     selectedMovie: {},
-    onSelectMovie: null
+    onSelectMovie: noop
 };
 
 export default MoviePage;

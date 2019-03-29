@@ -1,43 +1,38 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import noop from 'lodash.noop';
 
-import ResultsList from '../components/ResultsList';
-import SearchPanel from './SearchPanel';
-import SearchDescription from '../components/SearchDescription';
-
-import { sortMoviesComporator, filterMoviesComporator } from '../utils';
+import ResultsList from '../../components/ResultsList';
+import SearchPanel from '../SearchPanel';
+import SearchDescription from '../../components/SearchDescription';
+import { sortMoviesComporator, filterMoviesComporator } from '../../utils';
+import './styles.scss';
 
 class SearchPage extends Component {
-    constructor(props) {
-        super(props);
-        this.movies = props.movies;
-        this.onSearchFormSubmit = this.onSearchFormSubmit.bind(this);
-        this.onChangeSearchField = this.onChangeSearchField.bind(this);
-        this.onChangeSort = this.onChangeSort.bind(this);
-        this.state = {
-            results: [],
-            searchField: 'title',
-            sortField: 'rating'
-        };
-    }
+    state = {
+        results: [],
+        searchField: 'title',
+        sortField: 'rating'
+    };
 
-    onSearchFormSubmit(value) {
+    onSearchFormSubmit = (value) => {
         const { searchField, sortField } = this.state;
+        const { movies } = this.props;
 
         this.setState({
-            results: this.movies
+            results: movies
                 .filter(movie => filterMoviesComporator(movie, value, searchField))
                 .sort((a, b) => sortMoviesComporator(a, b, sortField))
         });
     }
 
-    onChangeSearchField(value) {
+    onChangeSearchField = (value) => {
         this.setState({
             searchField: value
         });
     }
 
-    onChangeSort(sortField) {
+    onChangeSort = (sortField) => {
         const { results } = this.state;
 
         this.setState({
@@ -82,7 +77,7 @@ SearchPage.propTypes = {
 
 SearchPage.defaultProps = {
     movies: [],
-    onSelectMovie: null
+    onSelectMovie: noop
 };
 
 export default SearchPage;

@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ResultsItem from './ResultsItem';
+import noop from 'lodash.noop';
+
+import ResultsItem from '../ResultsItem';
+import './styles.scss';
 
 const ResultsList = ({ movies, onSelectMovieHandler }) => (
-    <div className="results-item__container">
+    <div className="results__container">
         {
             movies.map(item => (
                 <ResultsItem {...item} key={item.id} onSelectHandler={onSelectMovieHandler} />))
@@ -24,7 +27,7 @@ ResultsList.propTypes = {
 
 ResultsList.defaultProps = {
     movies: [],
-    onSelectMovieHandler: null
+    onSelectMovieHandler: noop
 };
 
 export default ResultsList;

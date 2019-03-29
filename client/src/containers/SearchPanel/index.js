@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import noop from 'lodash.noop';
 
-import SearchFieldSelect from '../components/SearchFieldSelect';
+import SearchFieldSelect from '../../components/SearchFieldSelect';
+import './styles.scss';
 
 class SearchPanel extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { value: '' };
-        this.onSubmit = props.onSubmit;
-        this.handleChange = this.handleChange.bind(this);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+    state = { value: '' };
 
-    handleChange(event) {
+    handleChange = (event) => {
         this.setState({ value: event.target.value });
     }
 
-    handleSubmit(event) {
+    handleSubmit = (event) => {
         event.preventDefault();
+
         const { value } = this.state;
-        this.onSubmit(value.toLowerCase());
+        const { onSubmit } = this.props;
+
+        onSubmit(value.toLowerCase());
     }
 
     render() {
@@ -52,8 +51,8 @@ SearchPanel.propTypes = {
 
 SearchPanel.defaultProps = {
     searchField: '',
-    onSubmit: null,
-    onChangeSearchField: null
+    onSubmit: noop,
+    onChangeSearchField: noop
 };
 
 export default SearchPanel;

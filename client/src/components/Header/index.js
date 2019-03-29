@@ -1,11 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import noop from 'lodash.noop';
+
+import Button from '../Button';
+import './styles.scss';
 
 const Header = ({ isSearchPage, goToSearchHandler }) => (
-    <header>
+    <header className="header">
         <div className="header__wrapper">
             <h1>netflixroulette</h1>
-            {!isSearchPage && <button type="button" onClick={goToSearchHandler}>SEARCH</button>}
+            {
+                !isSearchPage && <Button onClickHandler={goToSearchHandler} textValue="search" className="header__button" />
+            }
         </div>
     </header>
 );
@@ -17,7 +23,7 @@ Header.propTypes = {
 
 Header.defaultProps = {
     isSearchPage: false,
-    goToSearchHandler: null
+    goToSearchHandler: noop
 };
 
 export default Header;

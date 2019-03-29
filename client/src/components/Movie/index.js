@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './styles.scss';
 
 const Movie = ({
     poster_path: path, title, release_date: date, vote_average: rating, tagline, runtime, overview

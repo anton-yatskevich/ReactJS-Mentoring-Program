@@ -1,0 +1,14 @@
+.search-description {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	max-width: 1200px;
+	margin: 0 auto;
+	font-weight: 600;
+
+	&__wrapper {
+		width: 100%;
+		background-color: rgb(209, 209, 209);
+		padding: 10px 20px;
+	}
+}

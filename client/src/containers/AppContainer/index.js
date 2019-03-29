@@ -1,30 +1,26 @@
 import React, { Component } from 'react';
-import Foooter from '../components/Footer';
-import Header from '../components/Header';
-import SearchPage from './SearchPage';
-import MOVIES_DATA from '../constants/mockData.json';
-import MoviePage from '../components/MoviePage';
-import ErrorBoundary from './ErrorBoundary';
+import Header from '../../components/Header';
+import SearchPage from '../SearchPage';
+import MOVIES_DATA from '../../constants/mockData.json';
+import MoviePage from '../../components/MoviePage';
+import ErrorHandlerComponent from '../ErrorBoundary';
+import './styles.scss';
 
 class AppContainer extends Component {
-    constructor() {
-        super();
-        this.movies = MOVIES_DATA;
-        this.onSelectMovie = this.onSelectMovie.bind(this);
-        this.goToSearchHandler = this.goToSearchHandler.bind(this);
-        this.state = {
-            selectedMovie: null
-        };
-    }
+    state = {
+        selectedMovie: null
+    };
 
-    onSelectMovie(id) {
-        const movie = this.movies.filter(item => item.id === id)[0];
+    movies = MOVIES_DATA;
+
+    onSelectMovie = (id) => {
+        const movie = this.movies.find(item => item.id === id);
         this.setState({
             selectedMovie: movie
         });
     }
 
-    goToSearchHandler() {
+    goToSearchHandler = () => {
         this.setState({
             selectedMovie: null
         });
@@ -34,7 +30,7 @@ class AppContainer extends Component {
         const { selectedMovie } = this.state;
 
         return (
-            <ErrorBoundary>
+            <>
                 <Header
                     isSearchPage={selectedMovie === null}
                     goToSearchHandler={this.goToSearchHandler}
@@ -52,10 +48,10 @@ class AppContainer extends Component {
                             : <SearchPage movies={this.movies} onSelectMovie={this.onSelectMovie} />
                     }
                 </main>
-                <Foooter />
-            </ErrorBoundary>
+                <footer>Copyright © 2019</footer>
+            </>
         );
     }
 }
 
-export default AppContainer;
+export default ErrorHandlerComponent(AppContainer);

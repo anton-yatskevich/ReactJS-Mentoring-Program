@@ -1,9 +1,18 @@
+import moment from 'moment';
+
+function filterDatesHelper(a, b) {
+    const momentA = moment(a.release_date, 'YYYY-MM-DD');
+    const momentB = moment(b.release_date, 'YYYY-MM-DD');
+
+    return momentB - momentA;
+}
+
 export const sortMoviesComporator = (a, b, sortField) => {
     switch (sortField) {
     case 'rating':
         return b.vote_average - a.vote_average;
     case 'release date':
-        return Number(b.release_date.slice(0, 4)) - Number(a.release_date.slice(0, 4));
+        return filterDatesHelper(a, b);
     default:
         return 0;
     }

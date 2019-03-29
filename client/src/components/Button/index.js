@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import noop from 'lodash.noop';
+import classNames from 'classnames';
+import './styles.scss';
 
 const Button = ({
-    onClickHandler, textValue, value, searchField
+    onClickHandler, textValue, value, isActive, className
 }) => (
     <button
         type="button"
         onClick={() => onClickHandler(value)}
-        className={searchField === value ? 'button--active' : ''}
+        className={classNames(className, { [`${className}--active`]: isActive })}
     >
         {textValue}
     </button>
@@ -17,14 +20,16 @@ Button.propTypes = {
     onClickHandler: PropTypes.func,
     textValue: PropTypes.string,
     value: PropTypes.string,
-    searchField: PropTypes.string
+    isActive: PropTypes.bool,
+    className: PropTypes.string
 };
 
 Button.defaultProps = {
-    onClickHandler: null,
+    onClickHandler: noop,
     textValue: '',
     value: '',
-    searchField: ''
+    isActive: false,
+    className: 'button'
 };
 
 export default Button;
