@@ -1,0 +1,20 @@
+.results-item {
+	margin: 10px;
+    max-width: 280px;
+
+	&__poster {
+		width: 100%;
+		margin-bottom: 5px;
+		cursor: pointer;
+	}
+
+	&__description-header {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 5px;
+	}
+
+	&__title {
+		font-weight: bold;
+	}
+}
