@@ -23,11 +23,15 @@
   "homepage": "https://github.com/anton-yatskevich/ReactJS-Mentoring-Program#readme",
   "devDependencies": {
     "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.5.0",
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.11.2",
     "eslint": "^5.15.2",
     "eslint-config-airbnb": "^17.1.0",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "^24.5.0",
     "nodemon": "^1.18.10",
     "webpack-cli": "^3.2.3",
@@ -60,5 +64,11 @@
     "style-loader": "^0.23.1",
     "uuid": "^3.3.2",
     "webpack": "^4.29.6"
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "enzymeSetup.js",
+    "moduleNameMapper": {
+      "\\.(css|less|sass|scss)$": "./__mocks__/styleMock.js"
+    }
   }
 }
