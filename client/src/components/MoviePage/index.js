@@ -7,7 +7,7 @@ import ResultsList from '../ResultsList';
 import './styles.scss';
 
 const MoviePage = ({ movies, selectedMovie, onSelectMovie }) => {
-    const currentGenre = selectedMovie.genres[0];
+    const currentGenre = selectedMovie.genres && selectedMovie.genres[0];
     const fiteredResults = movies
         .filter(movie => movie.genres.some(genre => currentGenre === genre));
 
