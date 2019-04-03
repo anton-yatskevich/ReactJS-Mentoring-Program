@@ -1,5 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+import toJson from 'enzyme-to-json';
 import { AppContainer } from './index';
 
 describe('AppContainer component', () => {
@@ -10,7 +11,7 @@ describe('AppContainer component', () => {
     });
 
     it('should be rendered with default props', () => {
-        expect(AppContainerComponent).toMatchSnapshot();
+        expect(toJson(AppContainerComponent)).toMatchSnapshot();
     });
 
     it('should set selectedMovie to null if goToSearchHandler is called', () => {

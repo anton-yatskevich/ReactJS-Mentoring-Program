@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Movie component should be rendered with default props 1`] = `
+<div
+  className="movie-content__wrapper"
+>
+  <div
+    className="movie-content"
+  >
+    <img
+      alt=""
+      className="movie-content__poster"
+      src=""
+    />
+    <div
+      className="movie-content__description"
+    >
+      <h2
+        className="movie-content__title"
+      />
+      <span
+        className="movie-content__rating"
+      >
+        0
+      </span>
+      <p
+        className="movie-content__paragraph"
+      />
+      <p
+        className="movie-content__paragraph movie-content__paragraph--bold"
+      >
+        <span />
+        <span>
+          0 min
+        </span>
+      </p>
+      <p
+        className="movie-content__paragraph"
+      />
+    </div>
+  </div>
+</div>
+`;

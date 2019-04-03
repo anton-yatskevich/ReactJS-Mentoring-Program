@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchDescription component should be rendered with default props 1`] = `
+<div
+  className="search-description__wrapper"
+>
+  <div
+    className="search-description"
+  >
+    <p
+      className="search-description__info"
+    >
+      0 movies found
+    </p>
+    <SortTypeSelect
+      onChangeSort={[Function]}
+      sortField=""
+    />
+  </div>
+</div>
+`;

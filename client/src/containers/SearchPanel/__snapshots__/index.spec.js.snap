@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchPanel component should be rendered with default props 1`] = `
+<div
+  className="search-panel"
+>
+  <form
+    className="search-panel__form"
+    onSubmit={[Function]}
+  >
+    <p
+      className="search-panel__title"
+    >
+      Find your movie
+    </p>
+    <input
+      className="search-panel__input"
+      onChange={[Function]}
+      placeholder="Search..."
+      type="text"
+      value=""
+    />
+    <div
+      className="search-panel__controls"
+    >
+      <SearchFieldSelect
+        onChangeSearchField={[Function]}
+        searchField=""
+      />
+      <input
+        className="search-panel__button--submit"
+        type="submit"
+        value="Search"
+      />
+    </div>
+  </form>
+</div>
+`;

@@ -1,4 +1,5 @@
 import React from 'react';
+import toJson from 'enzyme-to-json';
 import { shallow } from 'enzyme';
 import SearchPanel from './index';
 
@@ -10,7 +11,7 @@ describe('SearchPanel component', () => {
     });
 
     it('should be rendered with default props', () => {
-        expect(SearchPanelComponent).toMatchSnapshot();
+        expect(toJson(SearchPanelComponent)).toMatchSnapshot();
     });
 
     it('should set new value if input value is cahnged', () => {

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ResultsItem component should be rendered with default props 1`] = `
+<div
+  className="results-item"
+>
+  <img
+    alt=""
+    className="results-item__poster"
+    onClick={[Function]}
+    role="presentation"
+    src=""
+  />
+  <p
+    className="results-item__description-header"
+  >
+    <span
+      className="results-item__title"
+    />
+    <span
+      className="results-item__date"
+    />
+  </p>
+  <p />
+</div>
+`;

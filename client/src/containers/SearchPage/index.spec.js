@@ -1,10 +1,14 @@
 import React from 'react';
+import toJson from 'enzyme-to-json';
 import { shallow } from 'enzyme';
 import SearchPage from './index';
 import * as utils from '../../utils';
 
-utils.sortMoviesComporator = jest.fn().mockReturnValue([]);
-utils.filterMoviesComporator = jest.fn().mockReturnValue([]);
+jest.mock('../../utils', () => ({
+    sortMoviesComporator: jest.fn(() => []),
+    filterMoviesComporator: jest.fn(() => [])
+}));
+
 
 describe('SearchPage component', () => {
     let SearchPageComponent;
@@ -14,7 +18,7 @@ describe('SearchPage component', () => {
     });
 
     it('should be rendered with default props', () => {
-        expect(SearchPageComponent).toMatchSnapshot();
+        expect(toJson(SearchPageComponent)).toMatchSnapshot();
     });
 
     it('should set searchField value if onChangeSearchField is called', () => {

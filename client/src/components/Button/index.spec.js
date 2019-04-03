@@ -1,11 +1,12 @@
 import React from 'react';
+import toJson from 'enzyme-to-json';
 import { shallow } from 'enzyme';
 import Button from './index';
 
 describe('Button component', () => {
     it('should be rendered with default props', () => {
         const ButtonComponent = shallow(<Button />);
-        expect(ButtonComponent).toMatchSnapshot();
+        expect(toJson(ButtonComponent)).toMatchSnapshot();
     });
 
     it('should has active class if the button is active', () => {
