@@ -7,4 +7,17 @@ describe('MoviePage component', () => {
         const MoviePageComponent = shallow(<MoviePage />);
         expect(MoviePageComponent).toMatchSnapshot();
     });
+
+    it('should be rendered with filtered results', () => {
+        const props = {
+            movies: [{
+                genres: ['a', 'b']
+            }],
+            selectedMovie: {
+                genres: ['a']
+            }
+        };
+        const MoviePageComponent = shallow(<MoviePage {...props} />);
+        expect(MoviePageComponent).toMatchSnapshot();
+    });
 });
