@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchPage component should be rendered with default props 1`] = `
+<Fragment>
+  <SearchPanel
+    onChangeSearchField={[Function]}
+    onSubmit={[Function]}
+    searchField="title"
+  />
+  <SearchDescription
+    numberOfResults={0}
+    onChangeSort={[Function]}
+    sortField="rating"
+  />
+  <ResultsList
+    movies={Array []}
+    onSelectMovieHandler={[Function]}
+  />
+</Fragment>
+`;

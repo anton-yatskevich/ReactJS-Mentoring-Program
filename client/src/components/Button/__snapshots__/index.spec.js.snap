@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component should be rendered with default props 1`] = `
+<button
+  className="button"
+  onClick={[Function]}
+  type="button"
+/>
+`;

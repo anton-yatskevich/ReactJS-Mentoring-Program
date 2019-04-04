@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchFieldSelect component should be rendered with default props 1`] = `
+<div
+  className="search-field-select"
+>
+  <span
+    className="search-field-select__title"
+  >
+    Search by
+  </span>
+  <Button
+    className="search-field-select__button"
+    isActive={false}
+    onClickHandler={[Function]}
+    textValue="title"
+    value="title"
+  />
+  <Button
+    className="search-field-select__button"
+    isActive={false}
+    onClickHandler={[Function]}
+    textValue="genre"
+    value="genres"
+  />
+</div>
+`;

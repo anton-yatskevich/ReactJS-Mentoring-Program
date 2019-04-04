@@ -54,4 +54,5 @@ class AppContainer extends Component {
     }
 }
 
+export { AppContainer };
 export default ErrorHandlerComponent(AppContainer);

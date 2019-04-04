@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header component should be rendered with default props 1`] = `
+<header
+  className="header"
+>
+  <div
+    className="header__wrapper"
+  >
+    <h1>
+      netflixroulette
+    </h1>
+    <Button
+      className="header__button"
+      isActive={false}
+      onClickHandler={[Function]}
+      textValue="search"
+      value=""
+    />
+  </div>
+</header>
+`;
