@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import noop from 'lodash.noop';
-
-import ResultsList from '../../components/ResultsList';
+import MovieSchema from '../../constants/MovieSchema';
+import ResultsList from '../ResultsListContainer';
 import SearchPanel from '../SearchPanel';
 import SearchDescription from '../../components/SearchDescription';
 import { sortMoviesComporator, filterMoviesComporator } from '../../utils';
@@ -44,7 +43,6 @@ class SearchPage extends Component {
 
     render() {
         const { searchField, sortField, results } = this.state;
-        const { onSelectMovie } = this.props;
 
         return (
             <>
@@ -58,26 +56,18 @@ class SearchPage extends Component {
                     sortField={sortField}
                     onChangeSort={this.onChangeSort}
                 />
-                <ResultsList movies={results} onSelectMovieHandler={onSelectMovie} />
+                <ResultsList movies={results} />
             </>
         );
     }
 }
 
 SearchPage.propTypes = {
-    movies: PropTypes.arrayOf(PropTypes.objectOf(
-        PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.number,
-            PropTypes.arrayOf(PropTypes.string)
-        ])
-    )),
-    onSelectMovie: PropTypes.func
+    movies: PropTypes.arrayOf(MovieSchema)
 };
 
 SearchPage.defaultProps = {
-    movies: [],
-    onSelectMovie: noop
+    movies: []
 };
 
 export default SearchPage;

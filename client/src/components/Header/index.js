@@ -10,7 +10,7 @@ const Header = ({ isSearchPage, goToSearchHandler }) => (
         <div className="header__wrapper">
             <h1>netflixroulette</h1>
             {
-                !isSearchPage && <Button onClickHandler={goToSearchHandler} textValue="search" className="header__button" />
+                !isSearchPage && <Button onClickHandler={() => goToSearchHandler(null)} textValue="search" className="header__button" />
             }
         </div>
     </header>
