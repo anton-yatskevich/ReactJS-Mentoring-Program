@@ -1,8 +1,22 @@
-import { FETCH_MOVIES } from '../constants/ActionTypes';
+import { FETCH_MOVIES, RECIEVE_MOVIES } from '../constants/ActionTypes';
 
-export default function fetchMovies(payload) {
+function recieveMovies(payload) {
     return {
-        type: FETCH_MOVIES,
+        type: RECIEVE_MOVIES,
         payload
+    };
+}
+
+export default function fetchMovies(query) {
+    return (dispatch, getState) => {
+        dispatch({ type: FETCH_MOVIES });
+        const { searchField, sortField } = getState().searchParams;
+
+        return fetch(`https://reactjs-cdp.herokuapp.com/movies?sortBy=${sortField}&search=${query}&searchBy=${searchField}`)
+            .then(
+                response => response.json(),
+                error => console.log('Something went wrong', error)
+            )
+            .then(({ data }) => dispatch(recieveMovies(data)));
     };
 }

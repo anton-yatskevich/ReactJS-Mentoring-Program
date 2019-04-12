@@ -7,16 +7,18 @@ function filterDatesHelper(a, b) {
     return momentB - momentA;
 }
 
-export const sortMoviesComporator = (a, b, sortField) => {
-    switch (sortField) {
-    case 'rating':
-        return b.vote_average - a.vote_average;
-    case 'release date':
-        return filterDatesHelper(a, b);
-    default:
-        return 0;
-    }
-};
+export const sortMovies = (movies, sortField) => (
+    movies.sort((a, b) => {
+        switch (sortField) {
+        case 'rating':
+            return b.vote_average - a.vote_average;
+        case 'release date':
+            return filterDatesHelper(a, b);
+        default:
+            return 0;
+        }
+    })
+);
 
 export const filterMoviesComporator = (movie, searchValue, searchField) => {
     const field = movie[searchField];

@@ -2,13 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash.noop';
 import Header from '../Header';
-import SearchPage from '../../containers/SearchPage';
-import MOVIES_DATA from '../../constants/mockData.json';
+import SearchPage from '../SearchPage';
 import MoviePage from '../../containers/MoviePageContainer';
 import MovieSchema from '../../constants/MovieSchema';
 import './styles.scss';
 
-const AppContainer = ({ selectedMovie, selectMovie }) => (
+const AppContainer = ({ selectedMovie, selectMovie, numberOfResults }) => (
     <>
         <Header
             isSearchPage={selectedMovie === null}
@@ -17,8 +16,8 @@ const AppContainer = ({ selectedMovie, selectMovie }) => (
         <main>
             {
                 selectedMovie
-                    ? <MoviePage movies={MOVIES_DATA} />
-                    : <SearchPage movies={MOVIES_DATA} onSelectMovie={selectMovie} />
+                    ? <MoviePage />
+                    : <SearchPage numberOfResults={numberOfResults} />
             }
         </main>
         <footer>Copyright © 2019</footer>
@@ -26,11 +25,13 @@ const AppContainer = ({ selectedMovie, selectMovie }) => (
 );
 
 AppContainer.propTypes = {
+    numberOfResults: PropTypes.number,
     selectedMovie: MovieSchema,
     selectMovie: PropTypes.func
 };
 
 AppContainer.defaultProps = {
+    numberOfResults: 0,
     selectedMovie: {},
     selectMovie: noop
 };

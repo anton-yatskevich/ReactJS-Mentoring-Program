@@ -6,7 +6,7 @@ import uuidv1 from 'uuid/v1';
 import Button from '../Button';
 import './styles.scss';
 
-const SortTypeSelect = ({ sortField, onChangeSort }) => {
+const SortTypeSelect = ({ sortField, setSortField }) => {
     const sortTypes = ['release date', 'rating'];
 
     return (
@@ -16,7 +16,7 @@ const SortTypeSelect = ({ sortField, onChangeSort }) => {
                 sortTypes.map(sortType => (
                     <Button
                         key={uuidv1()}
-                        onClickHandler={onChangeSort}
+                        onClickHandler={setSortField}
                         value={sortType}
                         textValue={sortType}
                         isActive={sortType === sortField}
@@ -30,12 +30,12 @@ const SortTypeSelect = ({ sortField, onChangeSort }) => {
 
 SortTypeSelect.propTypes = {
     sortField: PropTypes.string,
-    onChangeSort: PropTypes.func
+    setSortField: PropTypes.func
 };
 
 SortTypeSelect.defaultProps = {
     sortField: '',
-    onChangeSort: noop
+    setSortField: noop
 };
 
 export default SortTypeSelect;

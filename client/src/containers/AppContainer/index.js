@@ -6,7 +6,8 @@ import ErrorHandlerComponent from '../ErrorBoundary';
 
 function mapStateToProps(state) {
     return {
-        selectedMovie: state.movies.selectedMovie
+        selectedMovie: state.movies.selectedMovie,
+        numberOfResults: state.movies.moviesList.length
     };
 }
 

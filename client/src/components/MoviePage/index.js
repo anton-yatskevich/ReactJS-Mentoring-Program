@@ -6,10 +6,8 @@ import ResultsList from '../../containers/ResultsListContainer';
 import MovieSchema from '../../constants/MovieSchema';
 import './styles.scss';
 
-const MoviePage = ({ movies, selectedMovie }) => {
+const MoviePage = ({ selectedMovie }) => {
     const currentGenre = selectedMovie.genres && selectedMovie.genres[0];
-    const fiteredResults = movies
-        .filter(movie => movie.genres.some(genre => currentGenre === genre));
 
     return (
         <>
@@ -17,7 +15,7 @@ const MoviePage = ({ movies, selectedMovie }) => {
             <div className="search-description__wrapper">
                 <p className="movie-page__results-description">{`Films by ${currentGenre} genre`}</p>
             </div>
-            <ResultsList movies={fiteredResults} />
+            <ResultsList />
         </>
     );
 };
