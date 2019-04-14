@@ -1,17 +1,14 @@
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import ResultsList from '../../components/ResultsList';
 import selectMovie from '../../actions/selectMovie';
+import sortHelper from '../../utils/sortHelper';
 
 function mapStateToProps(state) {
+    const { moviesList } = state.movies;
+    const { sortField } = state.searchParams;
     return {
-        sortField: state.searchParams.sortField,
-        movies: state.movies.moviesList
+        movies: sortHelper(moviesList, sortField)
     };
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ selectMovie }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(ResultsList);
+export default connect(mapStateToProps, { selectMovie })(ResultsList);

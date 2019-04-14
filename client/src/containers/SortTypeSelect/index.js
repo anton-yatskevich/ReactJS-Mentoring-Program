@@ -1,16 +1,11 @@
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import SortTypeSelect from '../../components/SortTypeSelect';
 import setSortField from '../../actions/setSortField';
 
-function mapStateToProps(state) {
+function mapStateToProps({ searchParams }) {
     return {
-        sortField: state.searchParams.sortField
+        sortField: searchParams.sortField
     };
 }
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ setSortField }, dispatch);
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(SortTypeSelect);
+export default connect(mapStateToProps, { setSortField })(SortTypeSelect);

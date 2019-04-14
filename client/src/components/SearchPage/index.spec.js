@@ -2,7 +2,7 @@ import React from 'react';
 import toJson from 'enzyme-to-json';
 import { shallow } from 'enzyme';
 import SearchPage from './index';
-import * as utils from '../../utils';
+import * as utils from '../../utils/sortHelper';
 
 jest.mock('../../utils', () => ({
     sortMoviesComporator: jest.fn(() => []),

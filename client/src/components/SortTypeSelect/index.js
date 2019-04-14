@@ -7,7 +7,7 @@ import Button from '../Button';
 import './styles.scss';
 
 const SortTypeSelect = ({ sortField, setSortField }) => {
-    const sortTypes = ['release date', 'rating'];
+    const sortTypes = [{ text: 'release date', value: 'release_date' }, { text: 'rating', value: 'rating' }];
 
     return (
         <div>
@@ -17,9 +17,9 @@ const SortTypeSelect = ({ sortField, setSortField }) => {
                     <Button
                         key={uuidv1()}
                         onClickHandler={setSortField}
-                        value={sortType}
-                        textValue={sortType}
-                        isActive={sortType === sortField}
+                        value={sortType.value}
+                        textValue={sortType.text}
+                        isActive={sortType.value === sortField}
                         className="sort-type__button"
                     />
                 ))

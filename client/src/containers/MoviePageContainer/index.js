@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import MoviePage from '../../components/MoviePage';
 
-function mapStateToProps(state) {
+function mapStateToProps({ movies }) {
     return {
-        selectedMovie: state.movies.selectedMovie
+        selectedMovie: movies.selectedMovie
     };
 }
 

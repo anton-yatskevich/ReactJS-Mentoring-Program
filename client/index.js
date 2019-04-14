@@ -2,11 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import logger from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 import reducer from './src/reducers/index';
 import AppComponent from './src/containers/AppContainer';
 
-const store = createStore(reducer, applyMiddleware(thunkMiddleware));
+const store = createStore(reducer, applyMiddleware(logger, thunkMiddleware));
 
 const renderApp = () => {
     const container = document.getElementById('react-app');

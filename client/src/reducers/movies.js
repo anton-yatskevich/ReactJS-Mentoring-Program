@@ -1,5 +1,4 @@
 import * as types from '../constants/ActionTypes';
-import { sortMovies } from '../utils';
 
 const defaultState = {
     moviesList: [],
@@ -24,11 +23,6 @@ export default function moviesReducer(state = defaultState, action) {
         return {
             ...state,
             selectedMovie: action.payload
-        };
-    case types.SET_SORT_FIELD:
-        return {
-            ...state,
-            moviesList: state.moviesList && sortMovies(state.moviesList, action.payload)
         };
     default:
         return state;

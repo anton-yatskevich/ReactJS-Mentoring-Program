@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import noop from 'lodash.noop';
 import fetchMovies from '../../actions/fetchMovies';
@@ -49,8 +48,4 @@ SearchPanel.defaultProps = {
     getMovies: noop
 };
 
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({ getMovies: fetchMovies }, dispatch);
-}
-
-export default connect(null, mapDispatchToProps)(SearchPanel);
+export default connect(null, { getMovies: fetchMovies })(SearchPanel);

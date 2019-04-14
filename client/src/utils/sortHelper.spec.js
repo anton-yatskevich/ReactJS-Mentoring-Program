@@ -1,4 +1,4 @@
-import { sortMoviesComporator, filterMoviesComporator } from './index';
+import sortMoviesHelper from './sortHelper';
 
 describe('SortMoviesComporator', () => {
     it('should return 0 if dates are equal and sortField is undefined', () => {
