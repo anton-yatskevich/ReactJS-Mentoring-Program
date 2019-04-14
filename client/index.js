@@ -4,10 +4,14 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import logger from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
+import persistMiddleware from './src/middlewares/persistStore';
 import reducer from './src/reducers/index';
 import AppComponent from './src/containers/AppContainer';
 
-const store = createStore(reducer, applyMiddleware(logger, thunkMiddleware));
+const middlewares = [thunkMiddleware, persistMiddleware];
+if (process.env.NODE_ENV === 'development') middlewares.push(logger);
+
+const store = createStore(reducer, applyMiddleware(...middlewares));
 
 const renderApp = () => {
     const container = document.getElementById('react-app');
