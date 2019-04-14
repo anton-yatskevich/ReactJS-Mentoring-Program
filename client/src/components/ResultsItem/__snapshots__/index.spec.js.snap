@@ -5,11 +5,9 @@ exports[`ResultsItem component should be rendered with default props 1`] = `
   className="results-item"
 >
   <img
-    alt=""
     className="results-item__poster"
     onClick={[Function]}
     role="presentation"
-    src=""
   />
   <p
     className="results-item__description-header"

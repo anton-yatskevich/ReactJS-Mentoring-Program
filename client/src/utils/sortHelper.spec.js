@@ -1,59 +1,19 @@
-import sortMoviesHelper from './sortHelper';
+import sortHelper from './sortHelper';
 
 describe('SortMoviesComporator', () => {
-    it('should return 0 if dates are equal and sortField is undefined', () => {
-        const result = sortMoviesComporator(1, 1);
-        expect(result).toBe(0);
+    const input = [
+        { release_date: '2016-02-07', vote_average: 2, id: 1 },
+        { release_date: '2014-02-07', vote_average: 3, id: 2 },
+        { release_date: '2018-02-07', vote_average: 2, id: 3 }
+    ];
+
+    it('should sort array by release_date field if sortfield is release date', () => {
+        const result = sortHelper(input, 'release_date');
+        expect(result[0].id).toBe(3);
     });
 
-    it('should compare dates by release_date field if sortfield is release date', () => {
-        const a = { release_date: '2018-02-07' };
-        const b = { release_date: '2016-02-07' };
-        const result = sortMoviesComporator(a, b, 'release date');
-        expect(result).toBeLessThan(0);
-    });
-
-    it('should compare dates by release_date field if sortfield is release date and return 0 if dates are equal', () => {
-        const a = { release_date: '2016-02-07' };
-        const b = { release_date: '2016-02-07' };
-        const result = sortMoviesComporator(a, b, 'release date');
-        expect(result).toBe(0);
-    });
-
-    it('should compare dates by release_date field if sortfield is release date', () => {
-        const a = { release_date: '2018-02-07' };
-        const b = { release_date: '2016-02-07' };
-        const result = sortMoviesComporator(a, b, 'release date');
-        expect(result).toBeLessThan(0);
-    });
-
-    it('should compare dates by vote_average field if sortfield is rating', () => {
-        const a = { vote_average: 9 };
-        const b = { vote_average: 8 };
-        const result = sortMoviesComporator(a, b, 'rating');
-        expect(result).toBe(-1);
-    });
-
-    it('should compare dates by vote_average field if sortfield is rating and return 0 if ratings are equal', () => {
-        const a = { vote_average: 8 };
-        const b = { vote_average: 8 };
-        const result = sortMoviesComporator(a, b, 'rating');
-        expect(result).toBe(0);
-    });
-
-    it('should return false if search field does not include query', () => {
-        const movie = {
-            a: 'value'
-        };
-        const result = filterMoviesComporator(movie, 'searchValue', 'a');
-        expect(result).toBe(false);
-    });
-
-    it('should return true if search field is array and includes query', () => {
-        const movie = {
-            a: ['value']
-        };
-        const result = filterMoviesComporator(movie, 'value', 'a');
-        expect(result).toBe(true);
+    it('should compare array by vote_average field if sortfield is rating', () => {
+        const result = sortHelper(input, 'rating');
+        expect(result[0].id).toBe(2);
     });
 });

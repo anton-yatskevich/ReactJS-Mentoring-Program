@@ -7,7 +7,7 @@ function filterDatesHelper(a, b) {
     return momentB - momentA;
 }
 
-export default (movies, sortField) => (
+const sortHelper = (movies, sortField) => (
     [...movies].sort((a, b) => {
         switch (sortField) {
         case 'rating':
@@ -19,3 +19,5 @@ export default (movies, sortField) => (
         }
     })
 );
+
+export default sortHelper;

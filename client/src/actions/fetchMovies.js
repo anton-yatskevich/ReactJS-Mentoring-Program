@@ -1,6 +1,6 @@
 import { FETCH_MOVIES, RECIEVE_MOVIES } from '../constants/ActionTypes';
 
-function recieveMovies(payload) {
+export function recieveMovies(payload) {
     return {
         type: RECIEVE_MOVIES,
         payload

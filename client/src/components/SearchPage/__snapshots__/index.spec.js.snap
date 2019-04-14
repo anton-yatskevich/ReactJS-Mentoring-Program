@@ -2,19 +2,10 @@
 
 exports[`SearchPage component should be rendered with default props 1`] = `
 <Fragment>
-  <SearchPanel
-    onChangeSearchField={[Function]}
-    onSubmit={[Function]}
-    searchField="title"
-  />
+  <Connect(SearchPanel) />
   <SearchDescription
     numberOfResults={0}
-    onChangeSort={[Function]}
-    sortField="rating"
   />
-  <ResultsList
-    movies={Array []}
-    onSelectMovieHandler={[Function]}
-  />
+  <Connect(ResultsList) />
 </Fragment>
 `;

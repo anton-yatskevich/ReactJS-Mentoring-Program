@@ -14,9 +14,9 @@ const ResultsItem = ({ movie, onSelectHandler }) => {
             <img className="results-item__poster" src={path} alt={title} role="presentation" onClick={() => onSelectHandler(movie)} />
             <p className="results-item__description-header">
                 <span className="results-item__title">{title}</span>
-                <span className="results-item__date">{date.slice(0, 4)}</span>
+                <span className="results-item__date">{date && date.slice(0, 4)}</span>
             </p>
-            <p>{genres.join(' & ')}</p>
+            <p>{genres && genres.join(' & ')}</p>
         </div>
     );
 };

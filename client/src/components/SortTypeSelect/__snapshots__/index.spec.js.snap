@@ -8,15 +8,15 @@ exports[`SortTypeSelect component should be rendered with default props 1`] = `
   <Button
     className="sort-type__button"
     isActive={false}
-    key="4b2cc020-5c6f-11e9-b5bd-f1f2c4194524"
+    key="unique1"
     onClickHandler={[Function]}
     textValue="release date"
-    value="release date"
+    value="release_date"
   />
   <Button
     className="sort-type__button"
     isActive={false}
-    key="4b2cc021-5c6f-11e9-b5bd-f1f2c4194524"
+    key="unique2"
     onClickHandler={[Function]}
     textValue="rating"
     value="rating"

@@ -20,14 +20,11 @@ exports[`MoviePage component should be rendered with default props 1`] = `
       Films by undefined genre
     </p>
   </div>
-  <ResultsList
-    movies={Array []}
-    onSelectMovieHandler={[Function]}
-  />
+  <Connect(ResultsList) />
 </Fragment>
 `;
 
-exports[`MoviePage component should be rendered with filtered results 1`] = `
+exports[`MoviePage component should be rendered with selectedMovie 1`] = `
 <Fragment>
   <Movie
     genres={
@@ -52,18 +49,6 @@ exports[`MoviePage component should be rendered with filtered results 1`] = `
       Films by a genre
     </p>
   </div>
-  <ResultsList
-    movies={
-      Array [
-        Object {
-          "genres": Array [
-            "a",
-            "b",
-          ],
-        },
-      ]
-    }
-    onSelectMovieHandler={[Function]}
-  />
+  <Connect(ResultsList) />
 </Fragment>
 `;

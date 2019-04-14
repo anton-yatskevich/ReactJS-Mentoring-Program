@@ -10,6 +10,7 @@
     "start": "cross-env NODE_ENV=development webpack-dev-server --open",
     "build:prod": "cross-env NODE_ENV=production webpack",
     "test": "jest",
+    "coverage": "jest --coverage",
     "e2e": "./node_modules/.bin/cypress open"
   },
   "repository": {
@@ -34,9 +35,11 @@
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",
+    "fetch-mock": "^7.3.1",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^24.5.0",
     "nodemon": "^1.18.10",
+    "redux-mock-store": "^1.5.3",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.2.1"
   },

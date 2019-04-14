@@ -1,7 +1,7 @@
 import React from 'react';
 import toJson from 'enzyme-to-json';
 import { shallow } from 'enzyme';
-import SearchPanel from './index';
+import { SearchPanel } from './index';
 
 describe('SearchPanel component', () => {
     let SearchPanelComponent;
@@ -24,7 +24,7 @@ describe('SearchPanel component', () => {
         const preventMock = jest.fn();
         const submitMock = jest.fn();
         const props = {
-            onSubmit: submitMock
+            getMovies: submitMock
         };
         const SearchPanelComponentWitHandler = shallow(<SearchPanel {...props} />);
         const Form = SearchPanelComponentWitHandler.find('.search-panel__form');

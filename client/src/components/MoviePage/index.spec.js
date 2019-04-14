@@ -9,11 +9,8 @@ describe('MoviePage component', () => {
         expect(toJson(MoviePageComponent)).toMatchSnapshot();
     });
 
-    it('should be rendered with filtered results', () => {
+    it('should be rendered with selectedMovie', () => {
         const props = {
-            movies: [{
-                genres: ['a', 'b']
-            }],
             selectedMovie: {
                 genres: ['a']
             }
