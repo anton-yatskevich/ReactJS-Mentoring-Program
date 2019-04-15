@@ -1,7 +1,6 @@
 import * as types from '../constants/ActionTypes';
 
 const localState = localStorage.getItem('redux-state');
-console.log(localStorage.getItem('redux-state'));
 
 const defaultState = (localState && JSON.parse(localState).searchParams) || {
     searchField: 'title',

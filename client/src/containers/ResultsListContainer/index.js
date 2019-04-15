@@ -1,13 +1,11 @@
 import { connect } from 'react-redux';
 import ResultsList from '../../components/ResultsList';
 import selectMovie from '../../actions/selectMovie';
-import sortHelper from '../../utils/sortHelper';
+import getSortedMovies from '../../selectors/index';
 
 function mapStateToProps(state) {
-    const { moviesList } = state.movies;
-    const { sortField } = state.searchParams;
     return {
-        movies: sortHelper(moviesList, sortField)
+        movies: getSortedMovies(state)
     };
 }
 
