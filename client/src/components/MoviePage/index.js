@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-
 import Movie from '../Movie';
 import ResultsList from '../../containers/ResultsListContainer';
 import MovieSchema from '../../constants/MovieSchema';
@@ -21,12 +19,10 @@ const MoviePage = ({ selectedMovie }) => {
 };
 
 MoviePage.propTypes = {
-    movies: PropTypes.arrayOf(MovieSchema),
     selectedMovie: MovieSchema
 };
 
 MoviePage.defaultProps = {
-    movies: [],
     selectedMovie: {}
 };
 
