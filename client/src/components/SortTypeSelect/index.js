@@ -1,13 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash.noop';
-import uuidv1 from 'uuid/v1';
 
 import Button from '../Button';
 import './styles.scss';
 
-const SortTypeSelect = ({ sortField, onChangeSort }) => {
-    const sortTypes = ['release date', 'rating'];
+const SortTypeSelect = ({ sortField, setSortField }) => {
+    const sortTypes = [
+        { text: 'release date', value: 'release_date', id: 'unique1' },
+        { text: 'rating', value: 'rating', id: 'unique2' }
+    ];
 
     return (
         <div>
@@ -15,11 +17,11 @@ const SortTypeSelect = ({ sortField, onChangeSort }) => {
             {
                 sortTypes.map(sortType => (
                     <Button
-                        key={uuidv1()}
-                        onClickHandler={onChangeSort}
-                        value={sortType}
-                        textValue={sortType}
-                        isActive={sortType === sortField}
+                        key={sortType.id}
+                        onClickHandler={setSortField}
+                        value={sortType.value}
+                        textValue={sortType.text}
+                        isActive={sortType.value === sortField}
                         className="sort-type__button"
                     />
                 ))
@@ -30,12 +32,12 @@ const SortTypeSelect = ({ sortField, onChangeSort }) => {
 
 SortTypeSelect.propTypes = {
     sortField: PropTypes.string,
-    onChangeSort: PropTypes.func
+    setSortField: PropTypes.func
 };
 
 SortTypeSelect.defaultProps = {
     sortField: '',
-    onChangeSort: noop
+    setSortField: noop
 };
 
 export default SortTypeSelect;

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import noop from 'lodash.noop';
-
-import SearchFieldSelect from '../../components/SearchFieldSelect';
+import fetchMovies from '../../actions/fetchMovies';
+import SearchFieldSelect from '../SearchField';
 import './styles.scss';
 
-class SearchPanel extends Component {
+export class SearchPanel extends Component {
     state = { value: '' };
 
     handleChange = (event) => {
@@ -16,14 +17,13 @@ class SearchPanel extends Component {
         event.preventDefault();
 
         const { value } = this.state;
-        const { onSubmit } = this.props;
+        const { getMovies } = this.props;
 
-        onSubmit(value.toLowerCase());
+        getMovies(value.toLowerCase());
     }
 
     render() {
         const { value } = this.state;
-        const { onChangeSearchField, searchField } = this.props;
 
         return (
             <div className="search-panel">
@@ -31,10 +31,7 @@ class SearchPanel extends Component {
                     <p className="search-panel__title">Find your movie</p>
                     <input className="search-panel__input" type="text" value={value} onChange={this.handleChange} placeholder="Search..." />
                     <div className="search-panel__controls">
-                        <SearchFieldSelect
-                            onChangeSearchField={onChangeSearchField}
-                            searchField={searchField}
-                        />
+                        <SearchFieldSelect />
                         <input className="search-panel__button--submit" type="submit" value="Search" />
                     </div>
                 </form>
@@ -44,15 +41,11 @@ class SearchPanel extends Component {
 }
 
 SearchPanel.propTypes = {
-    searchField: PropTypes.string,
-    onSubmit: PropTypes.func,
-    onChangeSearchField: PropTypes.func
+    getMovies: PropTypes.func
 };
 
 SearchPanel.defaultProps = {
-    searchField: '',
-    onSubmit: noop,
-    onChangeSearchField: noop
+    getMovies: noop
 };
 
-export default SearchPanel;
+export default connect(null, { getMovies: fetchMovies })(SearchPanel);

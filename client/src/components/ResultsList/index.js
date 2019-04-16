@@ -1,33 +1,27 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash.noop';
-
 import ResultsItem from '../ResultsItem';
+import MovieSchema from '../../constants/MovieSchema';
 import './styles.scss';
 
-const ResultsList = ({ movies, onSelectMovieHandler }) => (
+const ResultsList = ({ movies, selectMovie }) => (
     <div className="results__container">
         {
             movies.map(item => (
-                <ResultsItem {...item} key={item.id} onSelectHandler={onSelectMovieHandler} />))
+                <ResultsItem movie={item} key={item.id} onSelectHandler={selectMovie} />))
         }
     </div>
 );
 
 ResultsList.propTypes = {
-    movies: PropTypes.arrayOf(PropTypes.objectOf(
-        PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.number,
-            PropTypes.arrayOf(PropTypes.string)
-        ])
-    )),
-    onSelectMovieHandler: PropTypes.func
+    movies: PropTypes.arrayOf(MovieSchema),
+    selectMovie: PropTypes.func
 };
 
 ResultsList.defaultProps = {
     movies: [],
-    onSelectMovieHandler: noop
+    selectMovie: noop
 };
 
 export default ResultsList;

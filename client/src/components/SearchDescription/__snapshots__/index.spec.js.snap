@@ -12,10 +12,7 @@ exports[`SearchDescription component should be rendered with default props 1`] =
     >
       0 movies found
     </p>
-    <SortTypeSelect
-      onChangeSort={[Function]}
-      sortField=""
-    />
+    <Connect(SortTypeSelect) />
   </div>
 </div>
 `;

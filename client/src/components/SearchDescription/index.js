@@ -1,29 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import noop from 'lodash.noop';
-
-import SortTypeSelect from '../SortTypeSelect';
+import SortTypeSelect from '../../containers/SortTypeSelect';
 import './styles.scss';
 
-const SearchDescription = ({ numberOfResults, sortField, onChangeSort }) => (
+const SearchDescription = ({ numberOfResults }) => (
     <div className="search-description__wrapper">
         <div className="search-description">
             <p className="search-description__info">{`${numberOfResults} movies found`}</p>
-            <SortTypeSelect sortField={sortField} onChangeSort={onChangeSort} />
+            <SortTypeSelect />
         </div>
     </div>
 );
 
 SearchDescription.propTypes = {
-    numberOfResults: PropTypes.number,
-    sortField: PropTypes.string,
-    onChangeSort: PropTypes.func
+    numberOfResults: PropTypes.number
 };
 
 SearchDescription.defaultProps = {
-    numberOfResults: 0,
-    sortField: '',
-    onChangeSort: noop
+    numberOfResults: 0
 };
 
 export default SearchDescription;

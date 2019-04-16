@@ -23,10 +23,7 @@ exports[`SearchPanel component should be rendered with default props 1`] = `
     <div
       className="search-panel__controls"
     >
-      <SearchFieldSelect
-        onChangeSearchField={[Function]}
-        searchField=""
-      />
+      <Connect(SearchFieldSelect) />
       <input
         className="search-panel__button--submit"
         type="submit"

@@ -1,3 +1,30 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Root component test should call ReactDOM.render and match snapshot 1`] = `<AppContainer />`;
+exports[`Root component test should call ReactDOM.render and match snapshot 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "store": Object {
+        "dispatch": [Function],
+        "getState": [Function],
+        "replaceReducer": [Function],
+        "subscribe": [Function],
+        Symbol(observable): [Function],
+      },
+      "storeState": Object {
+        "movies": Object {
+          "isLoading": false,
+          "moviesList": Array [],
+          "selectedMovie": null,
+        },
+        "searchParams": Object {
+          "searchField": "title",
+          "sortField": "rating",
+        },
+      },
+    }
+  }
+>
+  <ErrorBoundary />
+</ContextProvider>
+`;

@@ -1,11 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AppContainer from './src/containers/AppContainer';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import logger from 'redux-logger';
+import thunkMiddleware from 'redux-thunk';
+import persistMiddleware from './src/middlewares/persistStore';
+import reducer from './src/reducers/index';
+import AppComponent from './src/containers/AppContainer';
+
+const middlewares = [thunkMiddleware, persistMiddleware];
+if (process.env.NODE_ENV === 'development') middlewares.push(logger);
+
+const store = createStore(reducer, applyMiddleware(...middlewares));
 
 const renderApp = () => {
     const container = document.getElementById('react-app');
     ReactDOM.render(
-        <AppContainer />,
+        <Provider store={store}>
+            <AppComponent />
+        </Provider>,
         container || document.createElement('div')
     );
 };
