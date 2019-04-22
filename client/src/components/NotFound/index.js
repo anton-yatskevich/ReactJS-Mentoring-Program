@@ -5,7 +5,7 @@ import './index.scss';
 const NotFoundComponent = () => (
     <div className="not-found-page__content">
         <h2>Page Not found</h2>
-        <Link to="/search">Go to the home page</Link>
+        <Link to="/">Go to the home page</Link>
     </div>
 );
 

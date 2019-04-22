@@ -1,8 +1,6 @@
 import * as types from '../constants/ActionTypes';
 
-const localState = localStorage.getItem('redux-state');
-
-const defaultState = (localState && JSON.parse(localState).movies) || {
+const defaultState = {
     moviesList: [],
     isLoading: false,
     selectedMovie: null

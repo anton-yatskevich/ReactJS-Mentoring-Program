@@ -6,7 +6,7 @@ import fetchMovies from '../../actions/fetchMovies';
 import SearchFieldSelect from '../SearchField';
 import './styles.scss';
 
-export class SearchPanel extends Component {
+export class SearchPanelComponent extends Component {
     state = { value: '' };
 
     handleChange = (event) => {

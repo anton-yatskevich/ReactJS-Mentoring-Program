@@ -11,20 +11,18 @@ import './styles.scss';
 
 const AppContainer = ({ selectedMovie, selectMovie, numberOfResults }) => (
     <Router>
-        <>
-            <Header
-                isSearchPage={selectedMovie === null}
-                goToSearchHandler={selectMovie}
-            />
-            <main>
-                <Switch>
-                    <Route path="/" exact component={SearchPage} numberOfResults={numberOfResults} />
-                    <Route path="/movie" component={MoviePage} />
-                    <Route path="" component={NotFound} />
-                </Switch>
-            </main>
-            <footer>Copyright © 2019</footer>
-        </>
+        <Header
+            isSearchPage={selectedMovie === null}
+            goToSearchHandler={selectMovie}
+        />
+        <main>
+            <Switch>
+                <Route path="/" exact component={() => <SearchPage numberOfResults={numberOfResults} />} />
+                <Route path="/film/:id" component={MoviePage} />
+                <Route path="" component={NotFound} />
+            </Switch>
+        </main>
+        <footer>Copyright © 2019</footer>
     </Router>
 );
 
