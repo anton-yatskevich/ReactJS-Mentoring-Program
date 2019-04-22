@@ -40,12 +40,12 @@ export class SearchPanelComponent extends Component {
     }
 }
 
-SearchPanel.propTypes = {
+SearchPanelComponent.propTypes = {
     getMovies: PropTypes.func
 };
 
-SearchPanel.defaultProps = {
+SearchPanelComponent.defaultProps = {
     getMovies: noop
 };
 
-export default connect(null, { getMovies: fetchMovies })(SearchPanel);
+export default connect(null, { getMovies: fetchMovies })(SearchPanelComponent);
