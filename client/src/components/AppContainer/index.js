@@ -6,6 +6,7 @@ import Header from '../Header';
 import SearchPage from '../SearchPage';
 import MoviePage from '../../containers/MoviePageContainer';
 import MovieSchema from '../../constants/MovieSchema';
+import SearchPanel from '../../containers/SearchPanel';
 import NotFound from '../NotFound';
 import './styles.scss';
 
@@ -17,7 +18,8 @@ const AppContainer = ({ selectedMovie, selectMovie, numberOfResults }) => (
         />
         <main>
             <Switch>
-                <Route path="/" exact component={() => <SearchPage numberOfResults={numberOfResults} />} />
+                <Route path="/" exact component={SearchPanel} />
+                <Route path="/search/:query?" component={() => <SearchPage numberOfResults={numberOfResults} />} />
                 <Route path="/film/:id" component={MoviePage} />
                 <Route path="" component={NotFound} />
             </Switch>

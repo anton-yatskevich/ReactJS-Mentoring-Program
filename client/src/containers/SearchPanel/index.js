@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import noop from 'lodash.noop';
 import fetchMovies from '../../actions/fetchMovies';
 import SearchFieldSelect from '../SearchField';
@@ -8,6 +10,16 @@ import './styles.scss';
 
 export class SearchPanelComponent extends Component {
     state = { value: '' };
+
+    componentDidMount() {
+        const { match, getMovies } = this.props;
+        const { url, params } = match;
+        if (url.includes('/search/')) {
+            const query = params.query || '';
+            this.setState({ value: query });
+            getMovies(query.toLowerCase());
+        }
+    }
 
     handleChange = (event) => {
         this.setState({ value: event.target.value });
@@ -17,8 +29,12 @@ export class SearchPanelComponent extends Component {
         event.preventDefault();
 
         const { value } = this.state;
-        const { getMovies } = this.props;
-
+        const { getMovies, match, history } = this.props;
+        let route = value || '';
+        if (!match.url.includes('/search/')) {
+            route = `/search/${route}`;
+        }
+        history.push(route);
         getMovies(value.toLowerCase());
     }
 
@@ -41,11 +57,13 @@ export class SearchPanelComponent extends Component {
 }
 
 SearchPanelComponent.propTypes = {
-    getMovies: PropTypes.func
+    getMovies: PropTypes.func,
+    history: ReactRouterPropTypes.history.isRequired,
+    match: ReactRouterPropTypes.match.isRequired
 };
 
 SearchPanelComponent.defaultProps = {
     getMovies: noop
 };
 
-export default connect(null, { getMovies: fetchMovies })(SearchPanelComponent);
+export default withRouter(connect(null, { getMovies: fetchMovies })(SearchPanelComponent));

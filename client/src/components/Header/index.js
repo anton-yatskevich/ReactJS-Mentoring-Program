@@ -1,29 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import noop from 'lodash.noop';
-
+import { Route, withRouter } from 'react-router-dom';
+import ReactRouterPropTypes from 'react-router-prop-types';
 import Button from '../Button';
 import './styles.scss';
 
-const Header = ({ isSearchPage, goToSearchHandler }) => (
+const Header = ({ history }) => (
     <header className="header">
         <div className="header__wrapper">
             <h1>netflixroulette</h1>
-            {
-                !isSearchPage && <Button onClickHandler={() => goToSearchHandler(null)} textValue="search" className="header__button" />
-            }
+            <Route path="/film/:id" component={() => <Button onClickHandler={() => history.push('/')} textValue="search" className="header__button" />} />
         </div>
     </header>
 );
 
 Header.propTypes = {
-    isSearchPage: PropTypes.bool,
-    goToSearchHandler: PropTypes.func
+    history: ReactRouterPropTypes.history.isRequired
 };
 
-Header.defaultProps = {
-    isSearchPage: false,
-    goToSearchHandler: noop
-};
-
-export default Header;
+export default withRouter(Header);
