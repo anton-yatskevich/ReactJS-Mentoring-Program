@@ -14,4 +14,16 @@
 		justify-content: space-between;
 		align-items: center;
 	}
+
+	&__button {
+		padding: 5px 20px;
+		font-size: 20px;
+		text-transform: uppercase;
+		background-color: rgb(226, 226, 226);
+		border: none;
+		color: rgb(148, 0, 0);
+		text-decoration: none;
+		margin-left: 15px;
+		cursor: pointer;
+	}
 }
