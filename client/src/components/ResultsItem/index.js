@@ -1,19 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash.noop';
-import { withRouter } from 'react-router-dom';
-import ReactRouterPropTypes from 'react-router-prop-types';
+import { withRouter, NavLink } from 'react-router-dom';
 import MovieSchema from '../../constants/MovieSchema';
 import './styles.scss';
 
-const ResultsItem = ({ movie, onSelectHandler, history }) => {
+const ResultsItem = ({ movie, onSelectHandler }) => {
     const {
         poster_path: path, title, genres, release_date: date
     } = movie;
 
     return (
         <div className="results-item">
-            <img className="results-item__poster" src={path} alt={title} role="presentation" onClick={() => { onSelectHandler(movie); history.push(`/film/${movie.id}`); }} />
+            <NavLink to={`/film/${movie.id}`}>
+                <img className="results-item__poster" src={path} alt={title} role="presentation" onClick={() => onSelectHandler(movie)} />
+            </NavLink>
             <p className="results-item__description-header">
                 <span className="results-item__title">{title}</span>
                 <span className="results-item__date">{date && date.slice(0, 4)}</span>
@@ -25,8 +26,7 @@ const ResultsItem = ({ movie, onSelectHandler, history }) => {
 
 ResultsItem.propTypes = {
     movie: MovieSchema,
-    onSelectHandler: PropTypes.func,
-    history: ReactRouterPropTypes.history.isRequired
+    onSelectHandler: PropTypes.func
 };
 
 ResultsItem.defaultProps = {
