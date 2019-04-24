@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash.noop';
-import { withRouter, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import MovieSchema from '../../constants/MovieSchema';
 import './styles.scss';
 
@@ -34,4 +34,4 @@ ResultsItem.defaultProps = {
     onSelectHandler: noop
 };
 
-export default withRouter(ResultsItem);
+export default ResultsItem;
