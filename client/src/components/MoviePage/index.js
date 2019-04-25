@@ -5,17 +5,21 @@ import MovieSchema from '../../constants/MovieSchema';
 import './styles.scss';
 
 const MoviePage = ({ selectedMovie }) => {
-    const currentGenre = selectedMovie.genres && selectedMovie.genres[0];
+    if (selectedMovie) {
+        const currentGenre = selectedMovie.genres && selectedMovie.genres[0];
 
-    return (
-        <>
-            <Movie {...selectedMovie} />
-            <div className="search-description__wrapper">
-                <p className="movie-page__results-description">{`Films by ${currentGenre} genre`}</p>
-            </div>
-            <ResultsList />
-        </>
-    );
+        return (
+            <>
+                <Movie {...selectedMovie} />
+                <div className="search-description__wrapper">
+                    <p className="movie-page__results-description">{`Films by ${currentGenre} genre`}</p>
+                </div>
+                <ResultsList />
+            </>
+        );
+    }
+
+    return null;
 };
 
 MoviePage.propTypes = {

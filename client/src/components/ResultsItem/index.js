@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash.noop';
+import { NavLink } from 'react-router-dom';
 import MovieSchema from '../../constants/MovieSchema';
 import './styles.scss';
 
@@ -11,7 +12,9 @@ const ResultsItem = ({ movie, onSelectHandler }) => {
 
     return (
         <div className="results-item">
-            <img className="results-item__poster" src={path} alt={title} role="presentation" onClick={() => onSelectHandler(movie)} />
+            <NavLink to={`/film/${movie.id}`}>
+                <img className="results-item__poster" src={path} alt={title} role="presentation" onClick={() => onSelectHandler(movie)} />
+            </NavLink>
             <p className="results-item__description-header">
                 <span className="results-item__title">{title}</span>
                 <span className="results-item__date">{date && date.slice(0, 4)}</span>

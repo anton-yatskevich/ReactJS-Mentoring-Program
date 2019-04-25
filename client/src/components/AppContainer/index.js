@@ -1,27 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import noop from 'lodash.noop';
 import Header from '../Header';
 import SearchPage from '../SearchPage';
 import MoviePage from '../../containers/MoviePageContainer';
 import MovieSchema from '../../constants/MovieSchema';
+import SearchPanel from '../../containers/SearchPanel';
+import NotFound from '../NotFound';
 import './styles.scss';
 
 const AppContainer = ({ selectedMovie, selectMovie, numberOfResults }) => (
-    <>
+    <Router>
         <Header
             isSearchPage={selectedMovie === null}
             goToSearchHandler={selectMovie}
         />
         <main>
-            {
-                selectedMovie
-                    ? <MoviePage />
-                    : <SearchPage numberOfResults={numberOfResults} />
-            }
+            <Switch>
+                <Route path="/" exact component={SearchPanel} />
+                <Route path="/search/:query?" component={() => <SearchPage numberOfResults={numberOfResults} />} />
+                <Route path="/film/:id" component={MoviePage} />
+                <Route path="" component={NotFound} />
+            </Switch>
         </main>
         <footer>Copyright © 2019</footer>
-    </>
+    </Router>
 );
 
 AppContainer.propTypes = {

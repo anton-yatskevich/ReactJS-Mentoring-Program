@@ -1,7 +1,7 @@
 import React from 'react';
 import toJson from 'enzyme-to-json';
 import { shallow } from 'enzyme';
-import { SearchPanel } from './index';
+import { SearchPanelComponent as SearchPanel } from './index';
 
 describe('SearchPanel component', () => {
     let SearchPanelComponent;

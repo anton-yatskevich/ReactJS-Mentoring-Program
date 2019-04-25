@@ -43,7 +43,8 @@ module.exports = {
     ],
     devServer: {
         contentBase: './public',
-        stats: 'errors-only'
+        stats: 'errors-only',
+        historyApiFallback: true
     },
     devtool: process.env.NODE_ENV === 'development' ? 'source-map' : 'none'
 };
