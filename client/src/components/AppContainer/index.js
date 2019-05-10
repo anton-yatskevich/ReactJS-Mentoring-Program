@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import noop from 'lodash.noop';
+import HomePage from '../../pages/HomePage';
 import Header from '../Header';
 import SearchPage from '../SearchPage';
 import MoviePage from '../../containers/MoviePageContainer';
@@ -12,19 +13,18 @@ import './styles.scss';
 
 const AppContainer = ({ selectedMovie, selectMovie, numberOfResults }) => (
     <Router>
-        <Header
+        {/* <Header
             isSearchPage={selectedMovie === null}
             goToSearchHandler={selectMovie}
-        />
-        <main>
-            <Switch>
-                <Route path="/" exact component={SearchPanel} />
-                <Route path="/search/:query?" component={() => <SearchPage numberOfResults={numberOfResults} />} />
-                <Route path="/film/:id" component={MoviePage} />
-                <Route path="" component={NotFound} />
-            </Switch>
-        </main>
-        <footer>Copyright © 2019</footer>
+        /> */}
+        {/* <main> */}
+        <Switch>
+            <Route path="/" exact component={HomePage} />
+            <Route path="/search/:query?" component={() => <SearchPage numberOfResults={numberOfResults} />} />
+            <Route path="/film/:id" component={MoviePage} />
+            <Route path="" component={NotFound} />
+        </Switch>
+        {/* </main> */}
     </Router>
 );
 

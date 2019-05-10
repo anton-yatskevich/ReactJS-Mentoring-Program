@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { SELECT_MOVIE } from '../constants/ActionTypes';
 
 export default function selectMovie(payload) {
@@ -9,9 +10,9 @@ export default function selectMovie(payload) {
 
 export function getSelectedMovie(id) {
     return dispatch => (
-        fetch(`https://reactjs-cdp.herokuapp.com/movies/${id}`)
+        axios.get(`https://reactjs-cdp.herokuapp.com/movies/${id}`)
             .then(
-                response => response.json(),
+                ({ data }) => data,
                 error => console.log('Something went wrong', error)
             )
             .then(movie => dispatch(selectMovie(movie)))
