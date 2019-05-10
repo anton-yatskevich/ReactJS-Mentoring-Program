@@ -14,7 +14,7 @@ const store = createStore(reducer, applyMiddleware(...middlewares));
 
 const renderApp = () => {
     const container = document.getElementById('react-app');
-    ReactDOM.hydrate(
+    ReactDOM.render(
         <Provider store={store}>
             <AppComponent />
         </Provider>,

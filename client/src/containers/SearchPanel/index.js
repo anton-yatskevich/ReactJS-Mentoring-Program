@@ -5,41 +5,31 @@ import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import noop from 'lodash.noop';
 import fetchMovies from '../../actions/fetchMovies';
+import setSearchQuery from '../../actions/setSearchQuery';
 import SearchFieldSelect from '../SearchField';
 import './styles.scss';
 
 export class SearchPanelComponent extends Component {
-    state = { value: '' };
-
-    componentDidMount() {
-        const { match, getMovies } = this.props;
-        const { url, params } = match;
-        if (url.includes('/search/')) {
-            const query = params.query || '';
-            this.setState({ value: query });
-            getMovies(query.toLowerCase());
-        }
-    }
-
     handleChange = (event) => {
-        this.setState({ value: event.target.value });
+        const { setSearchQuery: setValue } = this.props;
+        setValue(event.target.value);
     }
 
     handleSubmit = (event) => {
         event.preventDefault();
 
-        const { value } = this.state;
+        const { searchQuery } = this.props;
         const { getMovies, match, history } = this.props;
-        let route = value || '';
+        let route = searchQuery || '';
         if (!match.url.includes('/search/')) {
             route = `/search/${route}`;
         }
         history.push(route);
-        getMovies(value.toLowerCase());
+        getMovies();
     }
 
     render() {
-        const { value } = this.state;
+        const { searchQuery: value } = this.props;
 
         return (
             <div className="search-panel">
@@ -58,12 +48,24 @@ export class SearchPanelComponent extends Component {
 
 SearchPanelComponent.propTypes = {
     getMovies: PropTypes.func,
+    setSearchQuery: PropTypes.func,
     history: ReactRouterPropTypes.history.isRequired,
-    match: ReactRouterPropTypes.match.isRequired
+    match: ReactRouterPropTypes.match.isRequired,
+    searchQuery: PropTypes.string
 };
 
 SearchPanelComponent.defaultProps = {
-    getMovies: noop
+    getMovies: noop,
+    setSearchQuery: noop,
+    searchQuery: ''
 };
 
-export default withRouter(connect(null, { getMovies: fetchMovies })(SearchPanelComponent));
+function mapStateToProps({ searchParams }) {
+    return {
+        searchQuery: searchParams.searchQuery
+    };
+}
+
+export default withRouter(
+    connect(mapStateToProps, { getMovies: fetchMovies, setSearchQuery })(SearchPanelComponent)
+);

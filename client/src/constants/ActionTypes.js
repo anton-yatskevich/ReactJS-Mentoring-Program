@@ -3,3 +3,4 @@ export const SELECT_MOVIE = 'SELECT_MOVIE';
 export const SET_SEARCH_FIELD = 'SET_SEARCH_FIELD';
 export const SET_SORT_FIELD = 'SET_SORT_FIELD';
 export const RECIEVE_MOVIES = 'RECIEVE_MOVIES';
+export const SET_SEARCH_QUERY = 'SET_SEARCH_QUERY';

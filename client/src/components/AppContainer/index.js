@@ -3,11 +3,10 @@ import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import noop from 'lodash.noop';
 import HomePage from '../../pages/HomePage';
+import SearchPage from '../../pages/SearchPage';
 import Header from '../Header';
-import SearchPage from '../SearchPage';
 import MoviePage from '../../containers/MoviePageContainer';
 import MovieSchema from '../../constants/MovieSchema';
-import SearchPanel from '../../containers/SearchPanel';
 import NotFound from '../NotFound';
 import './styles.scss';
 
@@ -20,7 +19,7 @@ const AppContainer = ({ selectedMovie, selectMovie, numberOfResults }) => (
         {/* <main> */}
         <Switch>
             <Route path="/" exact component={HomePage} />
-            <Route path="/search/:query?" component={() => <SearchPage numberOfResults={numberOfResults} />} />
+            <Route path="/search/:query?" component={SearchPage} />
             <Route path="/film/:id" component={MoviePage} />
             <Route path="" component={NotFound} />
         </Switch>

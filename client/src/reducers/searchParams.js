@@ -1,10 +1,9 @@
 import * as types from '../constants/ActionTypes';
 
-const localState = localStorage.getItem('redux-state');
-
-const defaultState = (localState && JSON.parse(localState).searchParams) || {
+const defaultState = {
     searchField: 'title',
-    sortField: 'rating'
+    sortField: 'rating',
+    searchQuery: ''
 };
 
 export default function searchParamsReducer(state = defaultState, action) {
@@ -18,6 +17,11 @@ export default function searchParamsReducer(state = defaultState, action) {
         return {
             ...state,
             sortField: action.payload
+        };
+    case types.SET_SEARCH_QUERY:
+        return {
+            ...state,
+            searchQuery: action.payload
         };
     default:
         return state;
