@@ -6,23 +6,23 @@ import ErrorPage from '../pages/ErrorPage';
 
 export default [
     {
-        ...AppContainer,
+        component: AppContainer,
         routes: [
             {
-                ...HomePage,
+                component: HomePage,
                 path: '/',
                 exact: true
             },
             {
-                ...SearchPage,
+                component: SearchPage,
                 path: '/search/:query?'
             },
             {
-                ...MoviePage,
-                path: '/film/:id'
+                component: MoviePage,
+                path: '/film/:id?'
             },
             {
-                ...ErrorPage
+                component: ErrorPage
             }
         ]
     }

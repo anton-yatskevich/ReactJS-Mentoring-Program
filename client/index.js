@@ -12,11 +12,11 @@ import routes from './src/routes';
 const middlewares = [thunkMiddleware];
 if (process.env.NODE_ENV === 'development') middlewares.push(logger);
 
-const store = createStore(reducer, applyMiddleware(...middlewares));
+const store = createStore(reducer, window.INITIAL_STATE, applyMiddleware(...middlewares));
 
 const renderApp = () => {
     const container = document.getElementById('react-app');
-    ReactDOM.render(
+    ReactDOM.hydrate(
         <Provider store={store}>
             <BrowserRouter>
                 <div>{renderRoutes(routes)}</div>

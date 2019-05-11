@@ -3,7 +3,8 @@ import * as types from '../constants/ActionTypes';
 const defaultState = {
     moviesList: [],
     isLoading: false,
-    selectedMovie: null
+    selectedMovie: null,
+    selectedMovieId: 0
 };
 
 export default function moviesReducer(state = defaultState, action) {

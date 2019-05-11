@@ -5,4 +5,4 @@ const HomePage = () => (
     <SearchPanel />
 );
 
-export default { component: HomePage };
+export default HomePage;

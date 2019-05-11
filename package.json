@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npm-run-all --parallel dev:*",
-    "dev:server": "nodemon --watch build --exec \"node build/bundle.js\"",
+    "dev:server": "nodemon --watch build --exec node build/bundle.js",
     "dev:build-server": "webpack --config webpack.server.js --watch",
     "dev:build-client": "webpack --config webpack.client.js --watch",
     "server:dev": "nodemon ./server/index.js",
@@ -78,6 +78,7 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "sass-loader": "^7.1.0",
+    "serialize-javascript": "^1.7.0",
     "style-loader": "^0.23.1",
     "uuid": "^3.3.2",
     "webpack": "^4.29.6",

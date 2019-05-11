@@ -26,6 +26,4 @@ AppContainer.defaultProps = {
 };
 
 
-export default {
-    component: AppContainer
-};
+export default AppContainer;

@@ -10,6 +10,10 @@ import setSearchQuery from '../../actions/setSearchQuery';
 import fetchMovies from '../../actions/fetchMovies';
 
 class SearchPage extends Component {
+    static fetchData({ dispatch }) {
+        return dispatch(fetchMovies());
+    }
+
     componentDidMount() {
         const { match: { params }, setQuery, getMovies } = this.props;
         const query = params.query || '';
@@ -48,9 +52,7 @@ function mapStateToProps({ movies, searchParams }) {
         searchQuery: searchParams.searchQuery
     };
 }
-export default {
-    component: connect(
-        mapStateToProps,
-        { setQuery: setSearchQuery, getMovies: fetchMovies }
-    )(SearchPage)
-};
+export default connect(
+    mapStateToProps,
+    { setQuery: setSearchQuery, getMovies: fetchMovies }
+)(SearchPage);

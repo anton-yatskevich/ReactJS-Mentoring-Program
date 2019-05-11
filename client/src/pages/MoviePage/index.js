@@ -11,6 +11,10 @@ import Movie from '../../components/Movie';
 import './styles.scss';
 
 class MoviePage extends Component {
+    static fetchData({ dispatch }) {
+        return dispatch(getSelectedMovie());
+    }
+
     componentDidMount() {
         const { match: { params }, fetchSelectedMovie, setMovieId } = this.props;
         if (params.id) {
@@ -28,9 +32,13 @@ class MoviePage extends Component {
                     selectedMovie && (
                         <>
                             <Movie {...selectedMovie} />
-                            <div className="search-description__wrapper">
-                                <p className="movie-page__results-description">{`Films by ${selectedMovie.genres[0]} genre`}</p>
-                            </div>
+                            {
+                                selectedMovie.genres && (
+                                    <div className="search-description__wrapper">
+                                        <p className="movie-page__results-description">{`Films by ${selectedMovie.genres[0]} genre`}</p>
+                                    </div>
+                                )
+                            }
                         </>
                     )
                 }
@@ -59,9 +67,7 @@ function mapStateToProps({ movies }) {
     };
 }
 
-export default {
-    component: connect(
-        mapStateToProps,
-        { fetchSelectedMovie: getSelectedMovie, setMovieId: setSelectedMovieId }
-    )(MoviePage)
-};
+export default connect(
+    mapStateToProps,
+    { fetchSelectedMovie: getSelectedMovie, setMovieId: setSelectedMovieId }
+)(MoviePage);
