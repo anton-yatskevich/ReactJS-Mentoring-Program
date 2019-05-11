@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import noop from 'lodash.noop';
 import MovieSchema from '../../constants/MovieSchema';
 import { getSelectedMovie } from '../../actions/selectMovie';
+import fetchMovies from '../../actions/fetchMovies';
 import setSelectedMovieId from '../../actions/setSelectedMovieId';
 import ResultsList from '../../containers/ResultsListContainer';
 import Movie from '../../components/Movie';
@@ -12,14 +13,21 @@ import './styles.scss';
 
 class MoviePage extends Component {
     static fetchData({ dispatch }) {
-        return dispatch(getSelectedMovie());
+        return dispatch(getSelectedMovie())
+            .then(() => dispatch(fetchMovies()));
     }
 
     componentDidMount() {
-        const { match: { params }, fetchSelectedMovie, setMovieId } = this.props;
+        const {
+            match: { params },
+            fetchSelectedMovie,
+            setMovieId,
+            getMovies
+        } = this.props;
         if (params.id) {
             setMovieId(params.id);
             fetchSelectedMovie();
+            getMovies();
         }
     }
 
@@ -52,13 +60,15 @@ MoviePage.propTypes = {
     selectedMovie: MovieSchema,
     match: ReactRouterPropTypes.match.isRequired,
     fetchSelectedMovie: PropTypes.func,
-    setMovieId: PropTypes.func
+    setMovieId: PropTypes.func,
+    getMovies: PropTypes.func
 };
 
 MoviePage.defaultProps = {
     selectedMovie: {},
     fetchSelectedMovie: noop,
-    setMovieId: noop
+    setMovieId: noop,
+    getMovies: noop
 };
 
 function mapStateToProps({ movies }) {
@@ -69,5 +79,5 @@ function mapStateToProps({ movies }) {
 
 export default connect(
     mapStateToProps,
-    { fetchSelectedMovie: getSelectedMovie, setMovieId: setSelectedMovieId }
+    { fetchSelectedMovie: getSelectedMovie, setMovieId: setSelectedMovieId, getMovies: fetchMovies }
 )(MoviePage);
