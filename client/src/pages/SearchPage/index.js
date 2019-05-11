@@ -1,16 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import noop from 'lodash.noop';
 import ReactRouterPropTypes from 'react-router-prop-types';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
-import ResultsList from '../containers/ResultsListContainer';
-import SearchPanel from '../containers/SearchPanel';
-import SearchDescription from '../components/SearchDescription';
-import setSearchQuery from '../actions/setSearchQuery';
-import fetchMovies from '../actions/fetchMovies';
+import ResultsList from '../../containers/ResultsListContainer';
+import SearchPanel from '../../containers/SearchPanel';
+import SearchDescription from '../../components/SearchDescription';
+import setSearchQuery from '../../actions/setSearchQuery';
+import fetchMovies from '../../actions/fetchMovies';
 
 class SearchPage extends Component {
     componentDidMount() {
@@ -24,13 +21,9 @@ class SearchPage extends Component {
         const { numberOfResults } = this.props;
         return (
             <>
-                <Header />
-                <main>
-                    <SearchPanel />
-                    <SearchDescription numberOfResults={numberOfResults} />
-                    <ResultsList />
-                </main>
-                <Footer />
+                <SearchPanel />
+                <SearchDescription numberOfResults={numberOfResults} />
+                <ResultsList />
             </>
         );
     }
@@ -55,7 +48,9 @@ function mapStateToProps({ movies, searchParams }) {
         searchQuery: searchParams.searchQuery
     };
 }
-
-export default withRouter(
-    connect(mapStateToProps, { setQuery: setSearchQuery, getMovies: fetchMovies })(SearchPage)
-);
+export default {
+    component: connect(
+        mapStateToProps,
+        { setQuery: setSearchQuery, getMovies: fetchMovies }
+    )(SearchPage)
+};

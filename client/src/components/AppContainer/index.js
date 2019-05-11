@@ -1,43 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import noop from 'lodash.noop';
-import HomePage from '../../pages/HomePage';
-import SearchPage from '../../pages/SearchPage';
+import { renderRoutes } from 'react-router-config';
 import Header from '../Header';
-import MoviePage from '../../containers/MoviePageContainer';
-import MovieSchema from '../../constants/MovieSchema';
-import NotFound from '../NotFound';
+import Footer from '../Footer';
 import './styles.scss';
 
-const AppContainer = ({ selectedMovie, selectMovie, numberOfResults }) => (
-    <Router>
-        {/* <Header
-            isSearchPage={selectedMovie === null}
-            goToSearchHandler={selectMovie}
-        /> */}
-        {/* <main> */}
-        <Switch>
-            <Route path="/" exact component={HomePage} />
-            <Route path="/search/:query?" component={SearchPage} />
-            <Route path="/film/:id" component={MoviePage} />
-            <Route path="" component={NotFound} />
-        </Switch>
-        {/* </main> */}
-    </Router>
+const AppContainer = ({ route }) => (
+    <div>
+        <Header />
+        <main>
+            {renderRoutes(route.routes)}
+        </main>
+        <Footer />
+    </div>
 );
 
 AppContainer.propTypes = {
-    numberOfResults: PropTypes.number,
-    selectedMovie: MovieSchema,
-    selectMovie: PropTypes.func
+    route: PropTypes.shape({
+        routes: PropTypes.arrayOf(PropTypes.object)
+    })
 };
 
 AppContainer.defaultProps = {
-    numberOfResults: 0,
-    selectedMovie: {},
-    selectMovie: noop
+    route: {}
 };
 
 
-export default AppContainer;
+export default {
+    component: AppContainer
+};

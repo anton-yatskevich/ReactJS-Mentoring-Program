@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './index.scss';
+import './styles.scss';
 
 const NotFoundComponent = () => (
     <div className="not-found-page__content">
@@ -9,4 +9,4 @@ const NotFoundComponent = () => (
     </div>
 );
 
-export default NotFoundComponent;
+export default { component: NotFoundComponent };

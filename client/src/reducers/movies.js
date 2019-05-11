@@ -24,6 +24,11 @@ export default function moviesReducer(state = defaultState, action) {
             ...state,
             selectedMovie: action.payload
         };
+    case types.SET_SELECTED_MOVIE_ID:
+        return {
+            ...state,
+            selectedMovieId: action.payload
+        };
     default:
         return state;
     }

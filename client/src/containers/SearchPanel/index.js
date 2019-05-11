@@ -19,11 +19,8 @@ export class SearchPanelComponent extends Component {
         event.preventDefault();
 
         const { searchQuery } = this.props;
-        const { getMovies, match, history } = this.props;
-        let route = searchQuery || '';
-        if (!match.url.includes('/search/')) {
-            route = `/search/${route}`;
-        }
+        const { getMovies, history } = this.props;
+        const route = `/search/${searchQuery || ''}`;
         history.push(route);
         getMovies();
     }
@@ -50,7 +47,6 @@ SearchPanelComponent.propTypes = {
     getMovies: PropTypes.func,
     setSearchQuery: PropTypes.func,
     history: ReactRouterPropTypes.history.isRequired,
-    match: ReactRouterPropTypes.match.isRequired,
     searchQuery: PropTypes.string
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, withRouter, NavLink } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import './styles.scss';
 
 const Header = () => (
@@ -11,4 +11,4 @@ const Header = () => (
     </header>
 );
 
-export default withRouter(Header);
+export default Header;
