@@ -1,4 +1,4 @@
-import axios from 'axios';
+import request from '../utils/axiosWrapper';
 import { FETCH_MOVIES, RECIEVE_MOVIES } from '../constants/ActionTypes';
 
 export function recieveMovies(payload) {
@@ -13,11 +13,9 @@ export default function fetchMovies() {
         dispatch({ type: FETCH_MOVIES });
         const { searchField, sortField, searchQuery } = getState().searchParams;
 
-        return axios.get(`https://reactjs-cdp.herokuapp.com/movies?sortBy=${sortField}&sortOrder=desc&search=${searchQuery}&searchBy=${searchField}`)
-            .then(
-                ({ data }) => data,
-                error => console.log('Something went wrong', error)
-            )
-            .then(({ data }) => dispatch(recieveMovies(data)));
+        return request({
+            method: 'get',
+            url: `/movies?sortBy=${sortField}&sortOrder=desc&search=${searchQuery}&searchBy=${searchField}`
+        }).then(({ data }) => dispatch(recieveMovies(data)));
     };
 }
