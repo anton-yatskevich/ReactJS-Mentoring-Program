@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { renderRoutes } from 'react-router-config';
 import Header from '../Header';
 import Footer from '../Footer';
 import './styles.scss';
 
-const AppContainer = ({ route }) => (
+const AppContainer = ({ children }) => (
     <div>
         <Header />
         <main>
-            {renderRoutes(route.routes)}
+            {children}
         </main>
         <Footer />
     </div>

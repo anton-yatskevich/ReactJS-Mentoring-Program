@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import ReactRouterPropTypes from 'react-router-prop-types';
 import noop from 'lodash.noop';
@@ -46,7 +46,6 @@ export class SearchPanelComponent extends Component {
 SearchPanelComponent.propTypes = {
     getMovies: PropTypes.func,
     setSearchQuery: PropTypes.func,
-    history: ReactRouterPropTypes.history.isRequired,
     searchQuery: PropTypes.string
 };
 

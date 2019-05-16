@@ -18,17 +18,17 @@ class MoviePage extends Component {
     }
 
     componentDidMount() {
-        const {
-            match: { params },
-            fetchSelectedMovie,
-            setMovieId,
-            getMovies
-        } = this.props;
-        if (params.id) {
-            setMovieId(params.id);
-            fetchSelectedMovie();
-            getMovies();
-        }
+        // const {
+        //     match: { params },
+        //     fetchSelectedMovie,
+        //     setMovieId,
+        //     getMovies
+        // } = this.props;
+        // if (params.id) {
+        //     setMovieId(params.id);
+        //     fetchSelectedMovie();
+        //     getMovies();
+        // }
     }
 
     render() {

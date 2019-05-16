@@ -15,10 +15,10 @@ class SearchPage extends Component {
     }
 
     componentDidMount() {
-        const { match: { params }, setQuery, getMovies } = this.props;
-        const query = params.query || '';
-        setQuery(query);
-        getMovies();
+        // const { match: { params }, setQuery, getMovies } = this.props;
+        // const query = params.query || '';
+        // setQuery(query);
+        // getMovies();
     }
 
     render() {
@@ -34,7 +34,6 @@ class SearchPage extends Component {
 }
 
 SearchPage.propTypes = {
-    match: ReactRouterPropTypes.match.isRequired,
     setQuery: PropTypes.func,
     getMovies: PropTypes.func,
     numberOfResults: PropTypes.number

@@ -1,34 +1,18 @@
-import express from 'express';
-import { matchRoutes } from 'react-router-config';
-import routes from '../client/src/routes';
-import renderer from './utils/renderer';
-import createStore from './utils/createStore';
+const express = require('express');
+const next = require('next');
+const routes = require('../client/src/routes');
 
-const app = express();
+const port = 3000;
+const dev = process.env.NODE_ENV !== 'production';
+const app = next({ dir: './client/src', dev });
+const handler = routes.getRequestHandler(app);
 
-app.use(express.static('public'));
+app.prepare().then(() => {
+    const server = express();
+    server.use('/', express.static('static'));
+    server.get('*', (req, res) => handler(req, res));
 
-app.get('*', (req, res) => {
-    const store = createStore(req);
-
-    const promises = matchRoutes(routes, req.path)
-        .map(({ route }) => {
-            const { fetchData } = route.component;
-            return fetchData instanceof Function ? fetchData(store) : null;
-        });
-
-    Promise.all(promises).then(() => {
-        const context = {};
-        const content = renderer(req, store, context);
-
-        if (context.status === 404) {
-            res.status(404);
-        }
-
-        res.send(content);
+    server.listen(port, () => {
+        console.log(`> App listening on http://localhost:${port}`);
     });
-});
-
-app.listen(3030, () => {
-    console.log('App listening on port 3030...');
 });
