@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
 import PropTypes from 'prop-types';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import noop from 'lodash.noop';
+import { Router } from '../../routes';
 import fetchMovies from '../../actions/fetchMovies';
 import setSearchQuery from '../../actions/setSearchQuery';
 import SearchFieldSelect from '../SearchField';
@@ -17,11 +17,12 @@ export class SearchPanelComponent extends Component {
 
     handleSubmit = (event) => {
         event.preventDefault();
+        const { searchQuery, getMovies } = this.props;
 
-        const { searchQuery } = this.props;
-        const { getMovies, history } = this.props;
-        const route = `/search/${searchQuery || ''}`;
-        history.push(route);
+        Router.push({
+            pathname: `/search/${searchQuery}`
+        });
+
         getMovies();
     }
 

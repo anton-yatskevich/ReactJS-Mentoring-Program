@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import PropTypes from 'prop-types';
 import noop from 'lodash.noop';
 import MovieSchema from '../../constants/MovieSchema';
@@ -12,23 +11,24 @@ import Movie from '../../components/Movie';
 import './styles.scss';
 
 class MoviePage extends Component {
-    static fetchData({ dispatch }) {
-        return dispatch(getSelectedMovie())
-            .then(() => dispatch(fetchMovies()));
+    static async getInitialProps({ store, query: { id } }) {
+        store.dispatch(setSelectedMovieId(id));
+        await store.dispatch(getSelectedMovie());
+        await store.dispatch(fetchMovies());
     }
 
     componentDidMount() {
-        // const {
-        //     match: { params },
-        //     fetchSelectedMovie,
-        //     setMovieId,
-        //     getMovies
-        // } = this.props;
-        // if (params.id) {
-        //     setMovieId(params.id);
-        //     fetchSelectedMovie();
-        //     getMovies();
-        // }
+        const {
+            router: { query: { id } },
+            fetchSelectedMovie,
+            setMovieId,
+            getMovies
+        } = this.props;
+        if (id) {
+            setMovieId(id);
+            fetchSelectedMovie();
+            getMovies();
+        }
     }
 
     render() {
@@ -58,10 +58,11 @@ class MoviePage extends Component {
 
 MoviePage.propTypes = {
     selectedMovie: MovieSchema,
-    match: ReactRouterPropTypes.match.isRequired,
     fetchSelectedMovie: PropTypes.func,
     setMovieId: PropTypes.func,
-    getMovies: PropTypes.func
+    getMovies: PropTypes.func,
+    // eslint-disable-next-line react/forbid-prop-types
+    router: PropTypes.object.isRequired
 };
 
 MoviePage.defaultProps = {

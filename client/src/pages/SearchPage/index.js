@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import noop from 'lodash.noop';
-import ReactRouterPropTypes from 'react-router-prop-types';
 import ResultsList from '../../containers/ResultsListContainer';
 import SearchPanel from '../../containers/SearchPanel';
 import SearchDescription from '../../components/SearchDescription';
@@ -10,15 +9,20 @@ import setSearchQuery from '../../actions/setSearchQuery';
 import fetchMovies from '../../actions/fetchMovies';
 
 class SearchPage extends Component {
-    static fetchData({ dispatch }) {
-        return dispatch(fetchMovies());
+    static async getInitialProps({ store, query: { query } }) {
+        store.dispatch(setSearchQuery(query));
+        await store.dispatch(fetchMovies());
     }
 
     componentDidMount() {
-        // const { match: { params }, setQuery, getMovies } = this.props;
-        // const query = params.query || '';
-        // setQuery(query);
-        // getMovies();
+        const {
+            router: { query: { query } },
+            setQuery,
+            getMovies
+        } = this.props;
+
+        setQuery(query);
+        getMovies();
     }
 
     render() {
@@ -36,7 +40,9 @@ class SearchPage extends Component {
 SearchPage.propTypes = {
     setQuery: PropTypes.func,
     getMovies: PropTypes.func,
-    numberOfResults: PropTypes.number
+    numberOfResults: PropTypes.number,
+    // eslint-disable-next-line react/forbid-prop-types
+    router: PropTypes.object.isRequired
 };
 
 SearchPage.defaultProps = {
@@ -51,6 +57,7 @@ function mapStateToProps({ movies, searchParams }) {
         searchQuery: searchParams.searchQuery
     };
 }
+
 export default connect(
     mapStateToProps,
     { setQuery: setSearchQuery, getMovies: fetchMovies }

@@ -10,7 +10,7 @@ const Header = ({ router }) => (
             {
                 router.route === '/MoviePage'
                     && (
-                        <Link href="/">
+                        <Link href="/" as="/">
                             <button type="button" className="header__button">Search</button>
                         </Link>
                     )

@@ -1,20 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import noop from 'lodash.noop';
-import { NavLink } from 'react-router-dom';
+import { withRouter } from 'next/router';
 import MovieSchema from '../../constants/MovieSchema';
+import { Router } from '../../routes';
 import './styles.scss';
 
-const ResultsItem = ({ movie, onSelectHandler }) => {
+const ResultsItem = ({ movie }) => {
     const {
         poster_path: path, title, genres, release_date: date
     } = movie;
 
     return (
         <div className="results-item">
-            <NavLink to={`/film/${movie.id}`}>
-                <img className="results-item__poster" src={path} alt={title} role="presentation" onClick={() => onSelectHandler(movie)} />
-            </NavLink>
+            <img className="results-item__poster" src={path} alt={title} role="presentation" onClick={() => Router.push({ pathname: `/film/${movie.id}` })} />
             <p className="results-item__description-header">
                 <span className="results-item__title">{title}</span>
                 <span className="results-item__date">{date && date.slice(0, 4)}</span>
@@ -25,13 +22,11 @@ const ResultsItem = ({ movie, onSelectHandler }) => {
 };
 
 ResultsItem.propTypes = {
-    movie: MovieSchema,
-    onSelectHandler: PropTypes.func
+    movie: MovieSchema
 };
 
 ResultsItem.defaultProps = {
-    movie: {},
-    onSelectHandler: noop
+    movie: {}
 };
 
-export default ResultsItem;
+export default withRouter(ResultsItem);
