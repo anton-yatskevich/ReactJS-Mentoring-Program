@@ -19,9 +19,7 @@ export class SearchPanelComponent extends Component {
         event.preventDefault();
         const { searchQuery, getMovies } = this.props;
 
-        Router.push({
-            pathname: `/search/${searchQuery}`
-        });
+        Router.pushRoute(`/search/${searchQuery}`);
 
         getMovies();
     }

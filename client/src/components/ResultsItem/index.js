@@ -11,7 +11,7 @@ const ResultsItem = ({ movie }) => {
 
     return (
         <div className="results-item">
-            <img className="results-item__poster" src={path} alt={title} role="presentation" onClick={() => Router.push({ pathname: `/film/${movie.id}` })} />
+            <img className="results-item__poster" src={path} alt={title} role="presentation" onClick={() => Router.pushRoute(`/film/${movie.id}`)} />
             <p className="results-item__description-header">
                 <span className="results-item__title">{title}</span>
                 <span className="results-item__date">{date && date.slice(0, 4)}</span>
