@@ -1,15 +1,18 @@
 const express = require('express');
-const path = require('path');
+const next = require('next');
+const routes = require('../client/src/routes');
 
-const app = express();
-const router = express.Router();
+const port = 3000;
+const dev = process.env.NODE_ENV !== 'production';
+const app = next({ dir: './client/src', dev });
+const handler = routes.getRequestHandler(app);
 
-app.use(express.static(path.join(__dirname, '../public')));
+app.prepare().then(() => {
+    const server = express();
+    server.use('/', express.static('static'));
+    server.get('*', (req, res) => handler(req, res));
 
-router.get('*', (req, res) => {
-    res.render('index.html');
-});
-
-app.listen(3000, () => {
-    console.log('App listening on port 3000...');
+    server.listen(port, () => {
+        console.log(`> App listening on http://localhost:${port}`);
+    });
 });

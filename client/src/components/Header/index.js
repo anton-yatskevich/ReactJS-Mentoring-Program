@@ -1,12 +1,20 @@
 import React from 'react';
-import { Route, withRouter, NavLink } from 'react-router-dom';
+import { withRouter } from 'next/router';
+import { Link } from '../../routes';
 import './styles.scss';
 
-const Header = () => (
+const Header = ({ router }) => (
     <header className="header">
         <div className="header__wrapper">
             <h1>netflixroulette</h1>
-            <Route path="/film/:id" component={() => <NavLink to="/" className="header__button">Search</NavLink>} />
+            {
+                router.route === '/MoviePage'
+                    && (
+                        <Link route="/">
+                            <button type="button" className="header__button">Search</button>
+                        </Link>
+                    )
+            }
         </div>
     </header>
 );
