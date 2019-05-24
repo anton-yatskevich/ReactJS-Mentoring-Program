@@ -1,8 +1,8 @@
 import React from 'react';
 import { withRouter } from 'next/router';
+import styled from 'styled-components';
 import MovieSchema from '../../constants/MovieSchema';
 import { Router } from '../../routes';
-import './styles.scss';
 
 const ResultsItem = ({ movie }) => {
     const {
@@ -10,14 +10,14 @@ const ResultsItem = ({ movie }) => {
     } = movie;
 
     return (
-        <div className="results-item">
-            <img className="results-item__poster" src={path} alt={title} role="presentation" onClick={() => Router.pushRoute(`/film/${movie.id}`)} />
-            <p className="results-item__description-header">
-                <span className="results-item__title">{title}</span>
-                <span className="results-item__date">{date && date.slice(0, 4)}</span>
-            </p>
+        <Result>
+            <Poster src={path} alt={title} role="presentation" onClick={() => Router.pushRoute(`/film/${movie.id}`)} />
+            <Description>
+                <Title>{title}</Title>
+                <span>{date && date.slice(0, 4)}</span>
+            </Description>
             <p>{genres && genres.join(' & ')}</p>
-        </div>
+        </Result>
     );
 };
 
@@ -28,5 +28,26 @@ ResultsItem.propTypes = {
 ResultsItem.defaultProps = {
     movie: {}
 };
+
+const Result = styled.div`
+    margin: 10px;
+    max-width: 280px;
+`;
+
+const Poster = styled.img`
+    width: 100%;
+    margin-bottom: 5px;
+    cursor: pointer;
+`;
+
+const Description = styled.p`
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+`;
+
+const Title = styled.span`
+    font-weight: bold;
+`;
 
 export default withRouter(ResultsItem);

@@ -3,11 +3,12 @@ import { connect } from 'react-redux';
 import { withRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import noop from 'lodash.noop';
+import styled from 'styled-components';
 import { Router } from '../../routes';
 import fetchMovies from '../../actions/fetchMovies';
 import setSearchQuery from '../../actions/setSearchQuery';
 import SearchFieldSelect from '../SearchField';
-import './styles.scss';
+
 
 export class SearchPanelComponent extends Component {
     handleChange = (event) => {
@@ -28,16 +29,16 @@ export class SearchPanelComponent extends Component {
         const { searchQuery: value } = this.props;
 
         return (
-            <div className="search-panel">
-                <form className="search-panel__form" onSubmit={this.handleSubmit}>
-                    <p className="search-panel__title">Find your movie</p>
-                    <input className="search-panel__input" type="text" value={value} onChange={this.handleChange} placeholder="Search..." />
-                    <div className="search-panel__controls">
+            <Container>
+                <Form onSubmit={this.handleSubmit}>
+                    <Title>Find your movie</Title>
+                    <Input type="text" value={value} onChange={this.handleChange} placeholder="Search..." />
+                    <Controls>
                         <SearchFieldSelect />
-                        <input className="search-panel__button--submit" type="submit" value="Search" />
-                    </div>
-                </form>
-            </div>
+                        <SubmitButton type="submit" value="Search" />
+                    </Controls>
+                </Form>
+            </Container>
         );
     }
 }
@@ -59,6 +60,47 @@ function mapStateToProps({ searchParams }) {
         searchQuery: searchParams.searchQuery
     };
 }
+
+const SubmitButton = styled.input`
+    padding: 8px 30px;
+    font-size: 18px;
+    text-transform: uppercase;
+    background-color: rgb(160, 0, 0);
+    border: none;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+`;
+
+const Container = styled.div`
+    width: 100%;
+    background-color: rgb(146, 133, 133);
+    padding: 40px 20px;
+    color: #ffffff;
+`;
+
+const Form = styled.form`
+    max-width: 1200px;
+    margin: 0 auto;
+`;
+
+const Title = styled.p`
+    font-size: 30px;
+    text-transform: uppercase;
+`;
+
+const Input = styled.input`
+    width: 100%;    
+    font-size: 20px;
+    padding: 6px 10px;
+    margin: 10px 0;
+`;
+
+const Controls = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+`;
 
 export default withRouter(
     connect(mapStateToProps, { getMovies: fetchMovies, setSearchQuery })(SearchPanelComponent)

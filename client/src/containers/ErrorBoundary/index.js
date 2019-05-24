@@ -1,7 +1,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import './styles.scss';
 
 function ErrorHandlerComponent(Component) {
     class ErrorBoundary extends React.Component {

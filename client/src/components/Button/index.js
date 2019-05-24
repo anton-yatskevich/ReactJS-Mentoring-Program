@@ -1,19 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled, { css } from 'styled-components';
 import noop from 'lodash.noop';
-import classNames from 'classnames';
-import './styles.scss';
 
 const Button = ({
-    onClickHandler, textValue, value, isActive, className
+    onClickHandler, textValue, value, isActive, isTransparent
 }) => (
-    <button
-        type="button"
-        onClick={() => onClickHandler(value)}
-        className={classNames(className, { [`${className}--active`]: isActive })}
-    >
+    <StyledButton type="button" isTransparent={isTransparent} isActive={isActive} onClick={() => onClickHandler(value)}>
         {textValue}
-    </button>
+    </StyledButton>
 );
 
 Button.propTypes = {
@@ -21,7 +16,7 @@ Button.propTypes = {
     textValue: PropTypes.string,
     value: PropTypes.string,
     isActive: PropTypes.bool,
-    className: PropTypes.string
+    isTransparent: PropTypes.bool
 };
 
 Button.defaultProps = {
@@ -29,7 +24,40 @@ Button.defaultProps = {
     textValue: '',
     value: '',
     isActive: false,
-    className: 'button'
+    isTransparent: false
 };
+
+const StyledButton = styled.button`
+    padding: 5px 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+    background-color: rgb(226, 226, 226);
+    font-weight: bold;
+    border: none;
+    color: rgb(99, 99, 99);
+    text-decoration: none;
+    margin-left: 15px;
+    transition: all 0.5;
+    cursor: pointer;
+
+    ${props => props.isTransparent && css`
+        background-color: transparent;
+        padding: 5px 15px;
+        margin-left: 0;
+        text-transform: none;
+        font-size: 20px;
+        outline: none;
+    `}
+
+    ${props => props.isActive && css`
+        color: white;
+        background-color: rgb(160, 0, 0);
+    `}
+
+    ${props => props.isActive && props.isTransparent && css`
+        color: black;
+        background-color: transparent;
+    `}
+`;
 
 export default Button;

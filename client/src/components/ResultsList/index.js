@@ -1,17 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import noop from 'lodash.noop';
 import ResultsItem from '../ResultsItem';
 import MovieSchema from '../../constants/MovieSchema';
-import './styles.scss';
 
 const ResultsList = ({ movies, selectMovie }) => (
-    <div className="results__container">
+    <Container>
         {
             movies.map(item => (
                 <ResultsItem movie={item} key={item.id} onSelectHandler={selectMovie} />))
         }
-    </div>
+    </Container>
 );
 
 ResultsList.propTypes = {
@@ -23,5 +23,14 @@ ResultsList.defaultProps = {
     movies: [],
     selectMovie: noop
 };
+
+const Container = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+    justify-content: space-around;
+    padding: 40px 0;
+`;
 
 export default ResultsList;

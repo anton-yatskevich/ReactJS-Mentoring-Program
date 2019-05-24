@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import SortTypeSelect from '../../containers/SortTypeSelect';
-import './styles.scss';
 
 const SearchDescription = ({ numberOfResults }) => (
-    <div className="search-description__wrapper">
-        <div className="search-description">
-            <p className="search-description__info">{`${numberOfResults} movies found`}</p>
+    <Container>
+        <Description>
+            <p>{`${numberOfResults} movies found`}</p>
             <SortTypeSelect />
-        </div>
-    </div>
+        </Description>
+    </Container>
 );
 
 SearchDescription.propTypes = {
@@ -19,5 +19,21 @@ SearchDescription.propTypes = {
 SearchDescription.defaultProps = {
     numberOfResults: 0
 };
+
+const Description = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    font-weight: 600;
+`;
+
+const Container = styled.div`
+    width: 100%;
+    background-color: rgb(209, 209, 209);
+    padding: 10px 20px;
+`;
+
 
 export default SearchDescription;
