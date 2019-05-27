@@ -5,14 +5,14 @@ import { withRouter } from 'next/router';
 import { Link } from '../../routes';
 
 const Header = ({ router }) => (
-    <StyledHeader className="header">
-        <HeadeWrapper className="header__wrapper">
+    <StyledHeader>
+        <HeadeWrapper>
             <h1>netflixroulette</h1>
             {
                 router.route === '/MoviePage'
                     && (
                         <Link route="/">
-                            <Button type="button" className="header__button">Search</Button>
+                            <Button type="button">Search</Button>
                         </Link>
                     )
             }

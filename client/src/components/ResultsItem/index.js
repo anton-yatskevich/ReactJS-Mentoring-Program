@@ -6,12 +6,12 @@ import { Router } from '../../routes';
 
 const ResultsItem = ({ movie }) => {
     const {
-        poster_path: path, title, genres, release_date: date
+        poster_path: path, title, genres, release_date: date, id
     } = movie;
 
     return (
         <Result>
-            <Poster src={path} alt={title} role="presentation" onClick={() => Router.pushRoute(`/film/${movie.id}`)} />
+            <Poster src={path} alt={title} role="presentation" onClick={() => Router.pushRoute(`/film/${id}`)} />
             <Description>
                 <Title>{title}</Title>
                 <span>{date && date.slice(0, 4)}</span>

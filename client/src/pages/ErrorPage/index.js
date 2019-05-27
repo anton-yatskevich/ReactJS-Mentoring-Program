@@ -5,7 +5,7 @@ import { Link } from '../../routes';
 const NotFoundComponent = () => (
     <Container>
         <h2>Page Not found</h2>
-        <Link href="/">Go to the home page</Link>
+        <Link route="/">Go to the home page</Link>
     </Container>
 );
 
