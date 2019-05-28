@@ -15,4 +15,6 @@ const APP_ROUTES = [{
 
 APP_ROUTES.forEach(route => routes.add(route));
 
-module.exports = routes;
+export const { Router } = routes; // necessary for Storybook
+export const { Link } = routes;
+export default routes;

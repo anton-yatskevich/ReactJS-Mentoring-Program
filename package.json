@@ -5,14 +5,11 @@
   "main": "index.js",
   "scripts": {
     "build": "next build ./client/src",
-    "start": "nodemon -w server server/index.js",
-    "dev": "npm-run-all --parallel dev:*",
-    "dev:server": "nodemon --watch build --exec node build/bundle.js",
-    "dev:build-server": "cross-env NODE_ENV=production webpack --config webpack.server.js --watch",
-    "dev:build-client": "cross-env NODE_ENV=production webpack --config webpack.client.js --watch",
+    "start": "nodemon -r esm -w server server/index.js",
     "test": "jest",
     "coverage": "jest --coverage",
-    "e2e": "./node_modules/.bin/cypress open"
+    "e2e": "./node_modules/.bin/cypress open",
+    "storybook": "start-storybook -c ./client/src/.storybook"
   },
   "repository": {
     "type": "git",
@@ -25,6 +22,10 @@
   },
   "homepage": "https://github.com/anton-yatskevich/ReactJS-Mentoring-Program#readme",
   "devDependencies": {
+    "@storybook/addon-actions": "^5.0.11",
+    "@storybook/addons": "^5.0.11",
+    "@storybook/cli": "^5.0.11",
+    "@storybook/react": "^5.0.11",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.5.0",
     "cypress": "^3.2.0",
@@ -48,11 +49,13 @@
   "dependencies": {
     "@zeit/next-sass": "^0.2.1-canary.4",
     "axios": "^0.18.0",
+    "babel-plugin-styled-components": "^1.10.0",
     "babel-polyfill": "^6.26.0",
     "classnames": "^2.2.6",
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",
     "css-loader": "^2.1.1",
+    "esm": "^3.2.25",
     "express": "^4.16.4",
     "lodash.noop": "^3.0.1",
     "moment": "^2.24.0",
@@ -73,6 +76,7 @@
     "redux-thunk": "^2.3.0",
     "reselect": "^4.0.0",
     "serialize-javascript": "^1.7.0",
+    "styled-components": "^4.2.0",
     "uuid": "^3.3.2"
   },
   "jest": {

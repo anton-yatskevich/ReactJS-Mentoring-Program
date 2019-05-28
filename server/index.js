@@ -1,6 +1,6 @@
-const express = require('express');
-const next = require('next');
-const routes = require('../client/src/routes');
+import express from 'express';
+import next from 'next';
+import routes from '../client/src/routes';
 
 const port = 3000;
 const dev = process.env.NODE_ENV !== 'production';

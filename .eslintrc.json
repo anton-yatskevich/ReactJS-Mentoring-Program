@@ -42,6 +42,15 @@
         "camelcase": ["error", {"properties": "never"}],
         "jsx-a11y/anchor-is-valid": [ "error", {
             "specialLink": [ "route" ]
-        }]
+        }],
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": [
+                    "./client/src/.storybook/**",
+                    "./client/src/stories/**" 
+                ]
+            }
+        ]
     }
 }

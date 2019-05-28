@@ -1,9 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash.noop';
-
 import Button from '../Button';
-import './styles.scss';
 
 const SortTypeSelect = ({ sortField, setSortField }) => {
     const sortTypes = [
@@ -22,7 +20,7 @@ const SortTypeSelect = ({ sortField, setSortField }) => {
                         value={sortType.value}
                         textValue={sortType.text}
                         isActive={sortType.value === sortField}
-                        className="sort-type__button"
+                        isTransparent
                     />
                 ))
             }
