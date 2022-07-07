@@ -58,7 +58,7 @@
     "esm": "^3.2.25",
     "express": "^4.16.4",
     "lodash.noop": "^3.0.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.4",
     "next": "^8.1.0",
     "next-redux-wrapper": "^3.0.0-alpha.2",
     "next-routes": "^1.4.2",
